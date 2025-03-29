@@ -1,0 +1,313 @@
+@font-face {
+    font-family: 'VogueFont';
+    src: url('fonts/Classyvogueregular.ttf') format('opentype');
+}
+@font-face {
+    font-family: 'NewYork';
+    src: url('fonts/NewYork PERSONAL USE.otf') format('opentype');
+}
+@font-face {
+    font-family: 'NT VALENTINO';
+    src: url('fonts/NT\ VALENTINO\ Italic\ \(Personal\ use\).otf') format('opentype');
+    src: url('fonts\NT VALENTINO Italic (Personal use).otf') format('opentype');
+}
+@font-face {
+    font-family: 'VELISTA';
+    src: url('fonts/VELISTA.ttf') format('opentype');
+}
+@font-face {
+    font-family: 'SIGNATURE';
+    src: url('fonts/Paradise\ Signature.otf') format('opentype');
+}
+body {
+    font-family: 'NewYork', serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    position: relative;
+    background: #000000; /* Default solid background */
+    color: #e9d6b3; /* Make text white */
+}
+
+/* Background image layer */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('images/herobg-hd.webp') no-repeat center center fixed;
+    background-size: cover;
+    z-index: -1;
+    opacity: 1;
+    transition: opacity 2.5s ease-in-out;
+}
+
+/* Fading effect when scrolling */
+body.scrolled::before {
+    opacity: 0;
+}
+
+/* Make sure all text elements are white */
+h1, h2, h3, p, a, nav ul li a {
+    color: #e9d6b3 !important;
+}
+
+/* Ensure links remain white */
+a {
+    text-decoration: underline;
+    color: #e9d6b3 !important;
+}
+
+a:hover {
+    color: #e9d6b3 !important;
+}
+
+
+
+.container {
+    display: flex;
+    height: 100vh;
+    position: relative;
+}
+
+/* Left horizontal element */
+.left-element {
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    transform: rotate(-90deg) translateX(-50%);
+    transform-origin: left top;
+    white-space: nowrap;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.right-element {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: rotate(90deg) translateX(50%);
+    transform-origin: right top;
+    white-space: nowrap;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+
+/* Vertical line in middle */
+/* .vertical-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: black;
+    transform: translateX(-50%);
+} */
+
+nav {
+    position: absolute;
+    right: 200px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+nav ul li {
+    margin: 20px 0;
+    position: relative;
+}
+
+/* Divider between nav items */
+/* nav ul li.divider::after {
+    content: "";
+    position: absolute;
+    right: -15px;
+    top: 50%;
+    height: 60%;
+    width: 1px;
+    background-color: black;
+    transform: translateY(-50%);
+} */
+
+nav ul li a {
+    font-size: 8rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    transition: 0.3s ease-in-out;
+    display: inline-block;
+}
+
+nav ul li a:hover {
+    letter-spacing: 5px;
+    transform: scale(1.05);
+    transition: 0.4s ease-in-out;
+}
+
+.info {
+    position: absolute;
+    left: 100px;
+    bottom: 120px;
+    text-align: left;
+    max-width: 400px;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+p {
+    font-size: 14px;
+    color: black;
+    margin: 5px 0;
+}
+
+a {
+    text-decoration: underline;
+    color: black;
+}
+
+
+/* Corner elements */
+.corner {
+    position: absolute;
+    width: 40px;
+    height: 100px;
+    border: 1px solid #e9d6b3;
+}
+
+.top-left {
+    top: 50px;
+    left: 50px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.top-right {
+    top: 50px;
+    right: 50px;
+    border-left: none;
+    border-bottom: none;
+}
+
+.bottom-left {
+    bottom: 50px;
+    left: 50px;
+    border-right: none;
+    border-top: none;
+}
+
+.bottom-right {
+    bottom: 50px;
+    right: 50px;
+    border-left: none;
+    border-top: none;
+}
+
+/* This is the new navigation */
+/* Add this to your existing CSS */
+.sticky-nav {
+    position: fixed;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    padding: 15px 0;
+    display: flex; /* Changed to flex */
+    justify-content: center; /* Center the nav items */
+    align-items: center; /* Vertically center */
+    z-index: 1000;
+    border-bottom: 0.4px solid white;
+    transition: top 2.5s ease-in-out, opacity 1.5s ease-in-out;
+    opacity: 0;
+}
+
+.name-plate {
+    position: absolute;
+    left: 50px;
+    font-family: 'VELISTA';
+    font-size: 1.2rem;
+    letter-spacing: 0.6px;
+    color: #e9d6b3;
+    text-transform: uppercase;
+    padding: 5px 0; /* Reduced padding since no border */
+    /* Removed all border-related properties */
+}
+.sticky-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+
+/* Keep all your other existing styles */
+
+/* Show navigation when scrolling */
+.sticky-nav.visible {
+    top: 0;
+    opacity: 1;
+}
+
+
+.sticky-nav ul li a {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    padding: 6px 15px;
+    border: 1px solid white;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+
+.sticky-nav ul li a:hover {
+    background: rgba(136, 134, 134, 0.2);
+}
+.about-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 100px auto;
+    padding: 50px 20px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+}
+
+.about-section {
+    width: 50%;
+    padding: 20px;
+    font-family: 'NewYork', serif;
+    font-size: 1.5rem; /* Bigger text */
+    text-align: left;
+    line-height: 2; /* Improve readability */
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+/* This class gets added when scrolled */
+.about-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
