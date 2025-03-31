@@ -27,6 +27,10 @@ body {
     position: relative;
     background: #000000; /* Default solid background */
     color: #e9d6b3; /* Make text white */
+    user-select: none; /* Prevents text selection */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 /* Background image layer */
@@ -97,16 +101,15 @@ a:hover {
 }
 
 
-/* Vertical line in middle */
-/* .vertical-line {
+ .vertical-line {
     position: absolute;
     left: 50%;
-    top: 0;
-    bottom: 0;
+    top: 800px;
+    bottom: 1500px;
     width: 1px;
-    background-color: black;
+    background-color: #e9d6b3;
     transform: translateX(-50%);
-} */
+}
 
 nav {
     position: absolute;
@@ -139,7 +142,7 @@ nav ul li {
 } */
 
 nav ul li a {
-    font-size: 8rem;
+    font-size: 4rem;
     font-weight: bold;
     text-decoration: none;
     color: black;
@@ -148,9 +151,9 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    letter-spacing: 5px;
+    font-style: italic;
     transform: scale(1.05);
-    transition: 0.4s ease-in-out;
+    transition: 0s ease-in-out;
 }
 
 .info {
@@ -183,7 +186,7 @@ a {
 .corner {
     position: absolute;
     width: 40px;
-    height: 100px;
+    height: 70px;
     border: 1px solid #e9d6b3;
 }
 
@@ -215,8 +218,6 @@ a {
     border-top: none;
 }
 
-/* This is the new navigation */
-/* Add this to your existing CSS */
 .sticky-nav {
     position: fixed;
     top: -100px;
@@ -242,8 +243,7 @@ a {
     letter-spacing: 0.6px;
     color: #e9d6b3;
     text-transform: uppercase;
-    padding: 5px 0; /* Reduced padding since no border */
-    /* Removed all border-related properties */
+    padding: 5px 0; 
 }
 .sticky-nav ul {
     list-style: none;
@@ -252,10 +252,6 @@ a {
     display: flex;
     gap: 30px;
 }
-
-/* Keep all your other existing styles */
-
-/* Show navigation when scrolling */
 .sticky-nav.visible {
     top: 0;
     opacity: 1;
@@ -292,9 +288,9 @@ a {
     width: 50%;
     padding: 20px;
     font-family: 'NewYork', serif;
-    font-size: 1.5rem; /* Bigger text */
+    font-size: 1.5rem; 
     text-align: left;
-    line-height: 2; /* Improve readability */
+    line-height: 2; 
 }
 
 .left {
@@ -305,9 +301,695 @@ a {
     text-align: right;
 }
 
-/* This class gets added when scrolled */
 .about-container.visible {
     opacity: 1;
     transform: translateY(0);
 }
+@font-face {
+    font-family: 'NewYork';
+    src: url('fonts/NewYork.otf') format('opentype');
+}
 
+.work-container {
+    background: #000;
+    color: #fff;
+    font-family: 'NewYork', sans-serif;
+    margin: 0;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
+    justify-content: center; /* Centers content vertically */
+    text-align: center;
+    height: 100vh;
+}
+
+.projects-list {
+    width: 60%;
+    text-align: center; /* Ensures text inside is centered */
+    margin-top: 20px;
+}
+
+.work-heading {
+    font-size: 3rem;
+    font-weight: normal;
+    text-transform: uppercase;
+    position: relative;
+}
+
+h2, .work-info {
+    margin: 10px 0;
+}
+
+
+.work-title {
+    font-size: 2.5rem;
+    font-weight: normal;
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.work-title:hover {
+    color: grey;
+}
+
+.work-info {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 40px;
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+.faq-container {
+    max-width: 800px;
+    margin: 200px auto 0; /* Adjusts position lower */
+    padding: 50px;
+    font-family: 'NewYork', serif;
+    color: #e9d6b3;
+    height: 100vh; /* Matches work-container height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers content vertically */
+}
+
+.faq-title {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.faq-item {
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(233, 214, 179, 0.2);
+    padding-bottom: 15px;
+}
+
+.faq-item h2 {
+    font-size: 1.5rem;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.faq-item p,
+.faq-item ul {
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.faq-item a {
+    color: #e9d6b3;
+    text-decoration: underline;
+}
+
+.faq-item ul {
+    padding-left: 20px;
+}
+
+.faq-item ul li {
+    list-style: none;
+} 
+
+
+
+
+
+
+* Modern Skills Section Styling */
+#skills {
+    margin-top: 12rem; /* Added margin-top to push the skills section further down */
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #fff;
+}
+
+.skills-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin: 50vh auto 50px; /* Moves it 30% down from the top */
+
+}
+
+.skills-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: 700;
+    background: linear-gradient(90deg, #e9d6b3, #f5e7c8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.skills-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #e9d6b3, transparent);
+    border-radius: 3px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns by default */
+    gap: 2rem;
+}
+
+.skill-category {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid rgba(233, 214, 179, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-color: rgba(233, 214, 179, 0.3);
+}
+
+.skill-category h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    color: #e9d6b3;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(233, 214, 179, 0.2);
+}
+
+.skill-category ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skill-category li {
+    margin-bottom: 1.2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Modern Progress Bar Styles */
+.progress-container {
+    width: 100%;
+    margin-top: 0.5rem;
+    position: relative;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.3rem;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.progress-bar-wrapper {
+    height: 8px;
+    background: rgba(233, 214, 179, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #e9d6b3 0%, #f5e7c8 100%);
+    transition: width 3.5s cubic-bezier(0.65, 0, 0.35, 1);
+    position: relative;
+    box-shadow: 0 0 10px rgba(233, 214, 179, 0.3);
+}
+
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, 
+                rgba(255,255,255,0) 0%, 
+                rgba(255,255,255,0.3) 50%, 
+                rgba(255,255,255,0) 100%);
+    animation: shimmer 5s infinite;
+    opacity: 0.7;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Percentage Badge */
+.progress-percent {
+    position: absolute;
+    right: 0;
+    top: -20px;
+    background: rgba(233, 214, 179, 0.2);
+    color: #e9d6b3;
+    padding: 0.2rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(233, 214, 179, 0.3);
+}
+
+@media (max-width: 768px) {
+    #skills {
+        margin-top: 3rem; /* Reduced from 12rem */
+        padding: 3rem 1rem; /* Slightly reduced padding */
+    }
+    
+    .skills-container {
+        margin: 5vh auto 30px; /* Changed from 50vh to 20vh */
+    }
+    
+    /* If you need it even higher on very small devices */
+    @media (max-width: 480px) {
+        #skills {
+            margin-top: 4rem;
+        }
+        
+        .skills-container {
+            margin: 15vh auto 20px;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* Now Playing Widget - Matches your existing design */
+
+
+.now-playing-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.now-playing-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.now-playing-container {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    width: 300px;
+    max-width: 400px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    border: 1px solid #e9d6b3;
+    border-radius: 2px;
+    z-index: 1000;
+    font-family: 'NewYork', serif;
+    color: #e9d6b3;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease-in-out;  /* Smooth transition */
+    overflow: hidden;
+    min-height: 100px;
+}
+
+/* When the container is hovered */
+.now-playing-container:hover {
+    width: 380px;
+    min-height: 120px;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 25px;
+    transform: translateY(0);
+}
+
+/* Album cover styling */
+.now-playing-container .album-cover {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    transition: transform 0.5s ease-in-out;  /* Smooth transition for cover */
+}
+
+/* When the container is hovered, enlarge the album cover */
+.now-playing-container:hover .album-cover {
+    transform: scale(1.25);  /* Scale the cover */
+}
+
+/* Text elements inside */
+.now-playing-container .track-name,
+.now-playing-container .artist-name,
+.now-playing-container .album-name {
+    font-size: 14px;
+    transition: all 0.5s ease-in-out;  /* Smooth transition for text */
+}
+
+/* On hover, make the text larger */
+.now-playing-container:hover .track-name,
+.now-playing-container:hover .artist-name,
+.now-playing-container:hover .album-name {
+    font-size: 18px;  /* Increase font size */
+}
+
+/* Optional: Allow text overflow to appear smoothly */
+.now-playing-container:hover .track-name,
+.now-playing-container:hover .artist-name,
+.now-playing-container:hover .album-name {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+}
+
+
+.now-playing-title {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.now-playing-divider {
+    height: 1px;
+    background: #e9d6b3;
+    margin-left: 15px;
+    flex-grow: 1;
+}
+
+.now-playing-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.album-art-container {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+}
+
+.album-art {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+/* .vinyl-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.7) 70%);
+    opacity: 0.7;
+    pointer-events: none;
+} */
+
+.track-info {
+    overflow: hidden;
+}
+
+.track-name {
+    font-size: 1.1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 5px;
+}
+
+.artist-name {
+    font-size: 0.9rem;
+    color: rgba(233, 214, 179, 0.7);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.now-playing-footer {
+    margin-top: 15px;
+    text-align: right;
+}
+
+.via-text {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    opacity: 0.5;
+    text-transform: uppercase;
+}
+
+/* Animation for currently playing track */
+@keyframes vinyl-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.now-playing-container.playing .vinyl-overlay {
+    animation: vinyl-rotate 4s linear infinite;
+}
+.album-name {
+    font-size: 0.8rem;
+    color: rgba(233, 214, 179, 0.6);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-style: italic;
+    margin-top: 5px;  /* Push album name slightly down */
+    display: block;   /* Ensures it appears on a new line */
+}
+
+.now-playing-container:hover {
+    width: 350px;
+    background: rgba(0, 0, 0, 0.85);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    /* Adjust body and background */
+    body {
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    body::before {
+        background-attachment: scroll;
+    }
+    
+    /* Navigation adjustments */
+    nav {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        width: 100%;
+        padding: 20px;
+        margin-top: 80px;
+    }
+    
+    nav ul li a {
+        font-size: 2.5rem;
+    }
+    
+    
+    .vertical-line {
+        display: none;
+    }
+ 
+    
+    /* Corner elements */
+    .corner {
+        width: 30px;
+        height: 50px;
+    }
+    
+    .top-left, .top-right, .bottom-left, .bottom-right {
+        top: 30px;
+        left: 30px;
+        right: 30px;
+        bottom: 30px;
+    }
+    
+    /* Sticky nav */
+    .sticky-nav {
+        padding: 10px 0;
+    }
+    
+    .sticky-nav ul {
+        gap: 10px;
+    }
+    
+    .sticky-nav ul li a {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+    }
+    
+    .name-plate {
+        left: 20px;
+        font-size: 1rem;
+    }
+    
+    /* About section */
+    .about-container {
+        flex-direction: column;
+        margin: 50px auto;
+    }
+    
+    .about-section {
+        width: 100%;
+        font-size: 1.2rem;
+        padding: 10px;
+    }
+    
+    /* Work section */
+    .work-container {
+        padding: 30px 20px;
+        height: auto;
+    }
+    
+    .projects-list {
+        width: 100%;
+    }
+    
+    .work-heading {
+        font-size: 2rem;
+    }
+    
+    .work-title {
+        font-size: 1.8rem;
+    }
+    
+    /* FAQ section */
+    .faq-container {
+        margin: 20px auto 0;
+        padding: 30px 20px;
+        height: auto;
+    }
+    
+    .faq-title {
+        font-size: 2rem;
+    }
+    
+    /* Skills section */
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Now playing widget */
+    .now-playing-container {
+        width: 90%;
+        right: 5%;
+        bottom: 20px;
+    }
+    
+    .now-playing-container:hover {
+        width: 90%;
+    }
+}
+
+/* Smaller mobile devices */
+@media (max-width: 480px) {
+    nav ul li a {
+        font-size: 2rem;
+    }
+    
+    .sticky-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .about-section {
+        font-size: 1rem;
+    }
+    
+    .work-heading {
+        font-size: 1.8rem;
+    }
+    
+    .work-title {
+        font-size: 1.5rem;
+    }
+    
+    .faq-title {
+        font-size: 1.8rem;
+    }
+    
+    .faq-item h2 {
+        font-size: 1.2rem;
+    }
+}
+/* Mobile-specific fixes */
+@media (max-width: 768px) {
+    /* Info section adjustments */
+    .info {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        width: calc(100% - 40px);
+        margin: 40px auto;
+        padding: 0 20px;
+        max-width: none;
+    }
+    
+    /* Side elements adjustments */
+    .left-element, .right-element {
+        position: relative;
+        left: auto;
+        right: auto;
+        top: auto;
+        transform: none;
+        text-align: center;
+        margin: 40px 0;
+        white-space: normal;
+        padding: 0 20px;
+    }
+    
+    /* Special treatment for vertical text on mobile */
+    .left-element::before, .right-element::before {
+        content: "—";
+        margin-right: 10px;
+    }
+    
+    .left-element::after, .right-element::after {
+        content: "—";
+        margin-left: 10px;
+    }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+    .info {
+        width: calc(100% - 20px);
+        margin: 20px auto;
+    }
+    
+    .left-element, .right-element {
+        font-size: 0.9rem;
+        margin: 30px 0;
+    }
+}

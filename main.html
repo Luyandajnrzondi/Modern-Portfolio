@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Portfolio</title>
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r174/three.min.js"></script>
+</head>
+<body>
+    <div class="sticky-nav">
+        
+        <div class="name-plate">Luyanda jnr. Zondi</div>
+        <ul>
+            <li><a href="#work">WORK</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#skills">SKILLS</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </div>
+    
+    <!-- Corner elements -->
+    <div class="corner top-left"></div>
+    <div class="corner top-right"></div>
+    <div class="corner bottom-left"></div>
+    <div class="corner bottom-right"></div>
+    
+    <div class="container">
+        <!-- Left horizontal element -->
+        <div class="left-element">
+            <span>© 2025 Luyanda Zondi Product Designer</span>
+        </div>
+        <div class="right-element">
+            <span>© 網頁設計師與藝術家。版權所有。</span>
+        </div>
+        
+        <!-- Vertical line in middle of page -->
+        <div class="vertical-line"></div>
+        
+        <nav>
+            <ul>
+                <li><a href="#work">WORK</a></li>
+                <li class="divider"></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li class="divider"></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li class="divider"></li>
+                <li><a href="#skills">SKILLS</a></li>
+                <li class="divider"></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+        <div class="info">
+            <h2>Currently working full-time as a Junior Product Designer at <a href="#">Detail Technologies</a></h2>        
+            <h2>的全端中級 Web 開發人員<a href="#"> 我是 Detail Technologies </a></h2>
+
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <div class="now-playing-container">
+        <div class="now-playing-header">
+            <span class="now-playing-title">NOW PLAYING</span>
+            <div class="now-playing-divider"></div>
+        </div>
+        
+        <div class="now-playing-content">
+            <div class="album-art-container">
+                <a id="track-link" href="#" target="_blank">
+                <img id="album-cover" src="https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png" 
+                     alt="Album Art" class="album-art">
+            </a>
+            
+                <div class="vinyl-overlay"></div>
+            </div>
+            
+            <div class="track-info">
+                <div id="track-name" class="track-name">Loading track...</div>
+                <div id="artist-name" class="artist-name">Artist</div>
+                <div id="album-name" class="album-name">Album</div> <!-- New Album Name -->
+            </div>
+        </div>
+        
+        <div class="now-playing-footer">
+        </div>
+    </div>
+    <div class="about-container" id="about">
+        <div class="about-section left">
+            <h1>Hello, I am Luyanda Jnr Zondi.</h1>
+            <p>
+                I am a full-stack web developer who started creating websites back in high school in 2019. 
+                Since then, I have developed more than 40 websites. Web development is more than just coding for me—it's an art. 
+                I take every project as a creative expression, blending logic and design to build something meaningful.
+            </p>
+            <p>
+                Beyond development, I am also a photographer. My passion for both technology and art drives me to see 
+                the beauty in every line of code, just as I do in every captured moment.
+            </p>
+            <p>
+                As an intermediate developer, I know that growth never stops. Every day, I discover something new in the world of development. 
+                I consider myself a fusion of an artist and a developer, a combination that brings me closer to mastering my craft.
+            </p>
+        </div>
+        <div class="vertical-line"></div>
+    
+        <div class="about-section right">
+            <h1>你好，我是 小盧揚達·宗迪。</h1>
+            <p>
+                我是一名全端網頁開發人員，自 2019 年高中時開始創建網站。  
+                從那時起，我已開發超過 40 個網站。對我來說，網頁開發不僅僅是編碼，而是一種藝術。  
+                我把每個專案都視為一種創意表達，融合邏輯與設計，打造有意義的作品。
+            </p>
+            <p>
+                除了開發，我還是一名攝影師。我對科技與藝術的熱愛，讓我在每一行程式碼中看到美，  
+                就像在每一張照片中捕捉美好瞬間一樣。
+            </p>
+            <p>
+                作為一名中級開發人員，我知道學習永無止境。每天我都會在開發領域發現新的事物。  
+                我認為自己是一名藝術家與開發者的融合體，這種結合使我更接近成為卓越的開發者。
+            </p>
+        </div>
+    </div>
+    <div class="work-container" id="work"> 
+      
+        <h1 class="work-heading">WORK</h1>
+        <div class="projects-list">
+            <div class="corner top-left"></div>
+            <div class="corner top-right"></div>
+            <h2><a href="https://example.com/shogo" class="work-title">Shogo Tominaga</a></h2>
+            <p class="work-info">Mar. 2025 / Dev / Design: Luyanda jnr. Zondi</p>
+
+            <h2><a href="https://example.com/lqve" class="work-title">LQVE</a></h2>
+            <p class="work-info">Mar. 2025 / Dev / Design: Luyanda jnr. Zondi</p>
+
+            <h2><a href="https://example.com/production-hasu" class="work-title">PRODUCTION HASU</a></h2>
+            <p class="work-info">Oct. 2024 / Design & Dev</p>
+
+            <h2><a href="https://example.com/emuni" class="work-title">emuni</a></h2>
+            <p class="work-info">Jul. 2024 / Dev / Design: Luyanda jnr. Zondi</p>
+
+            <h2><a href="https://example.com/under-voyager" class="work-title">UNDER VOYAGER</a></h2>
+            <p class="work-info">Apr. 2024 / Design & Dev</p>
+        
+    </div>
+    </div>
+    
+<div class="faq-background"></div> 
+    <div class="faq-container" id="faq">
+
+        <section class="faq-container">
+            <h1 class="faq-title">Frequently Asked Questions</h1>
+            
+            <div class="faq-item">
+                <h2>How did you make the background effect in this website?</h2>
+                <p>I used Three.js to write WebGL faster, and the background effect is written in GLSL.  
+                If you are interested in GLSL, I recommend you read <a href="https://thebookofshaders.com/">The Book of Shaders</a>.</p>
+            </div>
+        
+            <div class="faq-item">
+                <h2>Where can I find your code?</h2>
+                <p>I have a GitHub account, but my projects (including this website) are private repositories.</p>
+            </div>
+        
+            <div class="faq-item">
+                <h2>Can I use your code?</h2>
+                <p>I don't allow anyone to use my code. I don’t want to say such a thing, but I got too many questions about that.</p>
+            </div>
+        
+            <div class="faq-item">
+                <h2>How did you learn web frontend and WebGL/GLSL?</h2>
+                <p>By reading books and articles on the internet. Here is a list of web pages I recommend:</p>
+                <ul>
+                    <li><a href="https://threejs.org/examples/">Three.js Examples</a></li>
+                    <li><a href="https://thebookofshaders.com/">The Book of Shaders</a></li>
+                    <li><a href="https://threejs-journey.com/">Three.js Journey</a></li>
+                    <li><a href="https://www.codrops.com/">Codrops</a></li>
+                </ul>
+            </div>
+        
+            <div class="faq-item">
+                <h2>What libraries do you use?</h2>
+                <p><a href="https://greensock.com/gsap/">GSAP</a> for animations.</p>
+                <p><a href="https://threejs.org/">Three.js</a> for WebGL.</p>
+                <p><a href="https://tweakpane.github.io/">Tweakpane</a> for tuning parameters.</p>
+                <p>Alpine.js as my favorite JavaScript framework.</p>
+            </div>
+        </section>
+    </div>
+
+<div id="skills">
+    <section class="skills-container">
+        <h2 class="skills-title">Skills</h2>
+        
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Programming Languages</h3>
+                <ul>
+                    <li>
+                        <span>JavaScript</span>
+                        <div class="progress-container">
+                            <div class="progress-bar-wrapper">
+                                <div class="progress-bar" data-percent="90"></div>
+                            </div>
+                            <span class="progress-percent">90%</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Python</span>
+                        <div class="progress-container">
+                            <div class="progress-bar-wrapper">
+                                <div class="progress-bar" data-percent="85"></div>
+                            </div>
+                            <span class="progress-percent">85%</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span>C#</span>
+                        <div class="progress-container">
+                            <div class="progress-bar-wrapper">
+                                <div class="progress-bar" data-percent="85"></div>
+                            </div>
+                            <span class="progress-percent">85%</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Ruby</span>
+                        <div class="progress-container">
+                            <div class="progress-bar-wrapper">
+                                <div class="progress-bar" data-percent="70"></div>
+                            </div>
+                            <span class="progress-percent">70%</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span>SQL</span>
+                        <div class="progress-container">
+                            <div class="progress-bar-wrapper">
+                                <div class="progress-bar" data-percent="80"></div>
+                            </div>
+                            <span class="progress-percent">80%</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Frontend Frameworks/Libraries</h3>
+                <ul>
+                    <li>
+                        <span>React</span>
+                        <div class="progress-container">
+                            <div class="progress-bar-wrapper">
+                                <div class="progress-bar" data-percent="71"></div>
+                            </div>
+                            <span class="progress-percent">71%</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Angular</span>
+                        <div class="progress-container">
+                            <div class="progress-bar-wrapper">
+                                <div class="progress-bar" data-percent="87"></div>
+                            </div>
+                            <span class="progress-percent">87%</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Backend & Databases</h3>
+                <ul>
+                    <li>
+                        <span>Node.js</span>
+                        <div class="progress-container">
+                            <div class="progress-bar-wrapper">
+                                <div class="progress-bar" data-percent="80"></div>
+                            </div>
+                            <span class="progress-percent">80%</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Express.js</span>
+                        <div class="progress-container">
+                            <div class="progress-bar-wrapper">
+                                <div class="progress-bar" data-percent="75"></div>
+                            </div>
+                            <span class="progress-percent">75%</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span>MongoDB</span>
+                        <div class="progress-container">
+                            <div class="progress-bar-wrapper">
+                                <div class="progress-bar" data-percent="70"></div>
+                            </div>
+                            <span class="progress-percent">70%</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span>SQL</span>
+                        <div class="progress-container">
+                            <div class="progress-bar-wrapper">
+                                <div class="progress-bar" data-percent="85"></div>
+                            </div>
+                            <span class="progress-percent">85%</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Networking & Hardware</h3>
+                <ul>
+                    <li>
+                        <span>Packet Tracer</span>
+                        <div class="progress-container">
+                            <div class="progress-bar-wrapper">
+                                <div class="progress-bar" data-percent="65"></div>
+                            </div>
+                            <span class="progress-percent">65%</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Raspberry Pi</span>
+                        <div class="progress-container">
+                            <div class="progress-bar-wrapper">
+                                <div class="progress-bar" data-percent="70"></div>
+                            </div>
+                            <span class="progress-percent">70%</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Arduino</span>
+                        <div class="progress-container">
+                            <div class="progress-bar-wrapper">
+                                <div class="progress-bar" data-percent="75"></div>
+                            </div>
+                            <span class="progress-percent">75%</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div id="contact" 
+style="
+   display: flex; 
+   justify-content: flex-end; /* Moves the content to the right */
+   align-items: flex-end; /* Aligns it to the bottom */
+   height: 20vh; /* Adjusted height so it's not too low */
+   padding-right: 50px; /* Creates space from the right edge */
+   margin-bottom: 80px; /* Moves it slightly up */
+">
+
+<a href="https://kaput-mulberry-314.notion.site/Contact-1c7732c3c166809da652d95bca0a5c8a?pvs=4" target="_blank" 
+  style="display: flex; align-items: center; text-decoration: none; color: #e9d6b3; 
+         font-size: 2rem; font-family: 'NewYork', serif;">
+   Contact Me | 联系我
+   <svg width="28" height="48" viewBox="0 0 24 24" fill="none" 
+        xmlns="http://www.w3.org/2000/svg" style="margin-left: 12px;">
+       <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="#e9d6b3" 
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+   </svg>
+</a>
+</div>
+
+</body>
+</html>
