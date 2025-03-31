@@ -110,52 +110,6 @@ a:hover {
     background-color: #e9d6b3;
     transform: translateX(-50%);
 }
-
-nav {
-    position: absolute;
-    right: 200px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    text-align: left;
-}
-
-nav ul li {
-    margin: 20px 0;
-    position: relative;
-}
-
-/* Divider between nav items */
-/* nav ul li.divider::after {
-    content: "";
-    position: absolute;
-    right: -15px;
-    top: 50%;
-    height: 60%;
-    width: 1px;
-    background-color: black;
-    transform: translateY(-50%);
-} */
-
-nav ul li a {
-    font-size: 4rem;
-    font-weight: bold;
-    text-decoration: none;
-    color: black;
-    transition: 0.3s ease-in-out;
-    display: inline-block;
-}
-
-nav ul li a:hover {
-    font-style: italic;
-    transform: scale(1.05);
-    transition: 0s ease-in-out;
-}
-
 .info {
     position: absolute;
     left: 100px;
@@ -218,22 +172,6 @@ a {
     border-top: none;
 }
 
-.sticky-nav {
-    position: fixed;
-    top: -100px;
-    left: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(5px);
-    padding: 15px 0;
-    display: flex; /* Changed to flex */
-    justify-content: center; /* Center the nav items */
-    align-items: center; /* Vertically center */
-    z-index: 1000;
-    border-bottom: 0.4px solid white;
-    transition: top 2.5s ease-in-out, opacity 1.5s ease-in-out;
-    opacity: 0;
-}
 
 .name-plate {
     position: absolute;
@@ -244,33 +182,6 @@ a {
     color: #e9d6b3;
     text-transform: uppercase;
     padding: 5px 0; 
-}
-.sticky-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 30px;
-}
-.sticky-nav.visible {
-    top: 0;
-    opacity: 1;
-}
-
-
-.sticky-nav ul li a {
-    font-size: 1rem;
-    font-weight: bold;
-    color: white;
-    text-decoration: none;
-    padding: 6px 15px;
-    border: 1px solid white;
-    border-radius: 5px;
-    transition: background 0.3s ease-in-out;
-}
-
-.sticky-nav ul li a:hover {
-    background: rgba(136, 134, 134, 0.2);
 }
 .about-container {
     display: flex;
@@ -835,11 +746,6 @@ canvas {
         bottom: 30px;
     }
     
-    /* Sticky nav */
-    .sticky-nav {
-        padding: 10px 0;
-    }
-    
     .sticky-nav ul {
         gap: 10px;
     }
@@ -900,12 +806,7 @@ canvas {
         grid-template-columns: 1fr;
     }
     
-    /* Now playing widget */
-    .now-playing-container {
-        width: 90%;
-        right: 5%;
-        bottom: 20px;
-    }
+    
     
     .now-playing-container:hover {
         width: 90%;
@@ -942,54 +843,187 @@ canvas {
     .faq-item h2 {
         font-size: 1.2rem;
     }
-}
-/* Mobile-specific fixes */
-@media (max-width: 768px) {
-    /* Info section adjustments */
+}@media (max-width: 768px) {
+    /* Hide side elements */
+    .left-element, 
+    .right-element {
+        display: none !important;
+    }
+    
+    /* Centered info section */
     .info {
-        position: relative;
-        left: auto;
-        bottom: auto;
-        width: calc(100% - 40px);
-        margin: 40px auto;
-        padding: 0 20px;
-        max-width: none;
-    }
-    
-    /* Side elements adjustments */
-    .left-element, .right-element {
-        position: relative;
-        left: auto;
-        right: auto;
-        top: auto;
-        transform: none;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 400px;
         text-align: center;
-        margin: 40px 0;
-        white-space: normal;
-        padding: 0 20px;
+        margin: 0;
+        padding: 20px;
     }
     
-    /* Special treatment for vertical text on mobile */
-    .left-element::before, .right-element::before {
-        content: "—";
-        margin-right: 10px;
+    /* Move skills section higher */
+    #skills {
+        margin-top: 2rem !important;
+        padding: 2rem 1rem !important;
     }
     
-    .left-element::after, .right-element::after {
-        content: "—";
-        margin-left: 10px;
+    .skills-container {
+        margin: 5vh auto 20px !important;
+    }
+    
+    /* Navigation adjustments */
+    .sticky-nav {
+        z-index: 1001;
+    }
+    
+    /* Now playing widget */
+    .now-playing-container {
+        width: 90%;
+        right: 5%;
+        bottom: 10px;
+        z-index: 1000;
+    }
+    
+    /* About section adjustments */
+    .about-container {
+        margin-top: 120vh; /* Push below centered info */
     }
 }
 
-/* For very small screens */
 @media (max-width: 480px) {
     .info {
-        width: calc(100% - 20px);
-        margin: 20px auto;
+        width: 95%;
+        padding: 15px;
+        max-width: 350px;
     }
     
-    .left-element, .right-element {
-        font-size: 0.9rem;
-        margin: 30px 0;
+    #skills {
+        margin-top: 1rem !important;
+        padding: 1.5rem 0.5rem !important;
+    }
+    
+    .skills-container {
+        margin: 2vh auto 10px !important;
+    }
+    
+    .sticky-nav ul li a[href*="#contact"] {
+        background: rgba(233, 214, 179, 0.3);
+        font-weight: bold;
+    }
+}
+/* Mobile Navigation Styles */
+@media (max-width: 768px) {
+    /* Hamburger menu button */
+    .mobile-menu-toggle {
+        position: fixed;
+        top: 25px;
+        right: 25px;
+        width: 30px;
+        height: 30px;
+        z-index: 1002;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    .mobile-menu-toggle span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: #e9d6b3;
+        transition: all 0.3s ease;
+    }
+    
+    /* Overlay background */
+    .mobile-nav-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 1001;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.5s ease;
+        backdrop-filter: blur(5px);
+    }
+    
+    /* Navigation links container */
+    .mobile-nav-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        text-align: center;
+    }
+    
+    /* Navigation links */
+    .mobile-nav-content ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .mobile-nav-content li {
+        margin: 25px 0;
+        position: relative;
+    }
+    
+    .mobile-nav-content li a {
+        color: #e9d6b3;
+        font-size: 1.8rem;
+        text-decoration: none;
+        font-family: 'NewYork', serif;
+        position: relative;
+        padding: 10px 0;
+        display: inline-block;
+    }
+    
+    /* White line under each link */
+    .mobile-nav-content li a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: #e9d6b3;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s ease;
+    }
+    
+    .mobile-nav-content li a:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+    
+    /* Active state */
+    .mobile-nav-active .mobile-nav-overlay {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    /* Hamburger to X animation */
+    .mobile-nav-active .mobile-menu-toggle span:nth-child(1) {
+        transform: translateY(11px) rotate(45deg);
+    }
+    
+    .mobile-nav-active .mobile-menu-toggle span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .mobile-nav-active .mobile-menu-toggle span:nth-child(3) {
+        transform: translateY(-11px) rotate(-45deg);
+    }
+    
+    /* Hide desktop nav on mobile */
+    nav {
+        display: none;
     }
 }
