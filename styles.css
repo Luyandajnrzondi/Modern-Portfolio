@@ -573,39 +573,6 @@ canvas {
     border: 1px solid rgba(233, 214, 179, 0.3);
 }
 
-@media (max-width: 768px) {
-    #skills {
-        margin-top: 3rem; /* Reduced from 12rem */
-        padding: 3rem 1rem; /* Slightly reduced padding */
-    }
-    
-    .skills-container {
-        margin: 5vh auto 30px; /* Changed from 50vh to 20vh */
-    }
-    
-    /* If you need it even higher on very small devices */
-    @media (max-width: 480px) {
-        #skills {
-            margin-top: 4rem;
-        }
-        
-        .skills-container {
-            margin: 15vh auto 20px;
-        }
-    }
-}
-
-
-
-
-
-
-
-
-
-
-/* Now Playing Widget - Matches your existing design */
-
 
 .now-playing-container.visible {
     opacity: 1;
@@ -789,178 +756,6 @@ canvas {
     background: rgba(0, 0, 0, 0.85);
 }
 
-/* Mobile Responsive Styles */
-@media (max-width: 768px) {
-    /* Adjust body and background */
-    body {
-        height: auto;
-        min-height: 100vh;
-    }
-    
-    body::before {
-        background-attachment: scroll;
-    }
-    
-    .vertical-line {
-        display: none;
-    }
- 
-    
-    /* Corner elements */
-    .corner {
-        width: 30px;
-        height: 50px;
-    }
-    
-    .top-left, .top-right, .bottom-left, .bottom-right {
-        top: 30px;
-        left: 30px;
-        right: 30px;
-        bottom: 30px;
-    }
-    .name-plate {
-        left: 20px;
-        font-size: 1rem;
-    }
-    
-    /* About section */
-    .about-container {
-        flex-direction: column;
-        margin: 50px auto;
-    }
-    
-    .about-section {
-        width: 100%;
-        font-size: 1.2rem;
-        padding: 10px;
-    }
-    .left {
-        text-align: left;
-    }
-    
-    .right {
-        text-align: left;
-    }
-    
-    /* Work section */
-    .work-container {
-        padding: 30px 20px;
-        height: auto;
-    }
-    
-    .projects-list {
-        width: 100%;
-    }
-    
-    .work-heading {
-        font-size: 2rem;
-    }
-    
-    .work-title {
-        font-size: 1.8rem;
-    }
-    
-    /* FAQ section */
-    .faq-container {
-        margin: 20px auto 0;
-        padding: 30px 20px;
-        height: auto;
-    }
-    
-    .faq-title {
-        font-size: 2rem;
-    }
-    
-    /* Skills section */
-    .skills-grid {
-        grid-template-columns: 1fr;
-    }
-    .now-playing-container:hover {
-        width: 80%;
-    }
-}
-
-@media (max-width: 480px) {
-    .info {
-        width: 95%;
-        padding: 15px;
-        max-width: 350px;
-    }
-    
-    #skills {
-        margin-top: 1rem !important;
-        padding: 1.5rem 0.5rem !important;
-    }
-    
-    .skills-container {
-        margin: 2vh auto 10px !important;
-    }
-    
-    .sticky-nav ul li a[href*="#contact"] {
-        background: rgba(233, 214, 179, 0.3);
-        font-weight: bold;
-    }
-}
-
-
-
-
-/* Hide left/right elements and adjust info on mobile */
-@media (max-width: 768px) {
-
-    .left-element, 
-    .right-element {
-        display: none !important;
-    }
-
-    .corner {
-        display: none;
-    }
-
-    .sticky-nav {
-        display: none; /* Hides the sticky nav on mobile */
-    }
-    .info {
-        position: absolute; /* Position it relative to the viewport */
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%); /* Center it precisely */
-        width: 80%; /* Adjust width if needed */
-        max-width: 600px; /* Prevent it from getting too wide */
-        padding: 20px;
-        text-align: center;
-    }
-    
-    /* Move skills section much higher */
-    #skills {
-        margin-top: 2rem !important; /* Reduced from 12rem */
-        padding: 2rem 1rem !important;
-    }
-    
-    .skills-container {
-        margin: 5vh auto 20px !important; /* Changed from 50vh */
-    }
-    
-    /* Ensure contact link is visible above now playing */
-    .sticky-nav {
-        z-index: 1001; /* Above now playing */
-    }
-    
-    /* Adjust now playing container */
-    .now-playing-container {
-        width: 60%;
-        height: 15%;
-        right: 5%;
-        bottom: 10px;
-        z-index: 1000;
-    }
-    .now-playing-container:hover {
-        width: 70%;
-    }
-    
-       
-}
-
 /* For very small screens */
 @media (max-width: 480px) {
     #skills {
@@ -977,6 +772,7 @@ canvas {
         background: rgba(233, 214, 179, 0.3);
         font-weight: bold;
     }
+    
 }
 
 
@@ -1093,5 +889,143 @@ canvas {
     nav {
         display: none;
     }
+    
+    .left-element, 
+    .right-element {
+        display: none !important;
+    }
+
+    .corner {
+        display: none;
+    }
+
+    .sticky-nav {
+        display: none; 
+    }
+    .info {
+        position: absolute; /* Position it relative to the viewport */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Center it precisely */
+        width: 80%; /* Adjust width if needed */
+        max-width: 600px; /* Prevent it from getting too wide */
+        padding: 20px;
+        text-align: center;
+    }
+    
+    /* Move skills section much higher */
+    #skills {
+        margin-top: 2rem !important; /* Reduced from 12rem */
+        padding: 2rem 1rem !important;
+    }
+    
+    .skills-container {
+        margin: 5vh auto 20px !important; /* Changed from 50vh */
+    }
+    
+    /* Ensure contact link is visible above now playing */
+    .sticky-nav {
+        z-index: 1001; /* Above now playing */
+    }
+    
+    /* Adjust now playing container */
+    .now-playing-container {
+        width: 60%;
+        height: 15%;
+        right: 5%;
+        bottom: 10px;
+        z-index: 1000;
+    }
+    .now-playing-container:hover {
+        width: 70%;
+    }
+     /* Adjust body and background */
+     body {
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    body::before {
+        background-attachment: scroll;
+    }
+    
+    .vertical-line {
+        display: none;
+    }
+ 
+    
+    /* Corner elements */
+    .corner {
+        width: 30px;
+        height: 50px;
+    }
+    
+    .top-left, .top-right, .bottom-left, .bottom-right {
+        top: 30px;
+        left: 30px;
+        right: 30px;
+        bottom: 30px;
+    }
+    .name-plate {
+        left: 20px;
+        font-size: 1rem;
+    }
+    
+    /* About section */
+    .about-container {
+        flex-direction: column;
+        margin: 50px auto;
+    }
+    
+    .about-section {
+        width: 100%;
+        font-size: 1.2rem;
+        padding: 10px;
+    }
+    .left {
+        text-align: left;
+    }
+    
+    .right {
+        text-align: left;
+    }
+    
+    /* Work section */
+    .work-container {
+        padding: 30px 20px;
+        height: auto;
+    }
+    
+    .projects-list {
+        width: 100%;
+    }
+    
+    .work-heading {
+        font-size: 2rem;
+    }
+    
+    .work-title {
+        font-size: 1.8rem;
+    }
+    
+    /* FAQ section */
+    .faq-container {
+        margin: 20px auto 0;
+        padding: 30px 20px;
+        height: auto;
+    }
+    
+    .faq-title {
+        font-size: 2rem;
+    }
+    
+    /* Skills section */
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    .now-playing-container:hover {
+        width: 80%;
+    }
+       
 }
 
