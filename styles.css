@@ -110,6 +110,52 @@ a:hover {
     background-color: #e9d6b3;
     transform: translateX(-50%);
 }
+
+nav {
+    position: absolute;
+    right: 200px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+nav ul li {
+    margin: 20px 0;
+    position: relative;
+}
+
+/* Divider between nav items */
+/* nav ul li.divider::after {
+    content: "";
+    position: absolute;
+    right: -15px;
+    top: 50%;
+    height: 60%;
+    width: 1px;
+    background-color: black;
+    transform: translateY(-50%);
+} */
+
+nav ul li a {
+    font-size: 4rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    transition: 0.3s ease-in-out;
+    display: inline-block;
+}
+
+nav ul li a:hover {
+    font-style: italic;
+    transform: scale(1.05);
+    transition: 0s ease-in-out;
+}
+
 .info {
     position: absolute;
     left: 100px;
@@ -172,6 +218,22 @@ a {
     border-top: none;
 }
 
+.sticky-nav {
+    position: fixed;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    padding: 15px 0;
+    display: flex; /* Changed to flex */
+    justify-content: center; /* Center the nav items */
+    align-items: center; /* Vertically center */
+    z-index: 1000;
+    border-bottom: 0.4px solid white;
+    transition: top 2.5s ease-in-out, opacity 1.5s ease-in-out;
+    opacity: 0;
+}
 
 .name-plate {
     position: absolute;
@@ -182,6 +244,33 @@ a {
     color: #e9d6b3;
     text-transform: uppercase;
     padding: 5px 0; 
+}
+.sticky-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+.sticky-nav.visible {
+    top: 0;
+    opacity: 1;
+}
+
+
+.sticky-nav ul li a {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    padding: 6px 15px;
+    border: 1px solid white;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+
+.sticky-nav ul li a:hover {
+    background: rgba(136, 134, 134, 0.2);
 }
 .about-container {
     display: flex;
@@ -712,22 +801,6 @@ canvas {
         background-attachment: scroll;
     }
     
-    /* Navigation adjustments */
-    nav {
-        position: relative;
-        right: auto;
-        top: auto;
-        transform: none;
-        width: 100%;
-        padding: 20px;
-        margin-top: 80px;
-    }
-    
-    nav ul li a {
-        font-size: 2.5rem;
-    }
-    
-    
     .vertical-line {
         display: none;
     }
@@ -745,16 +818,6 @@ canvas {
         right: 30px;
         bottom: 30px;
     }
-    
-    .sticky-nav ul {
-        gap: 10px;
-    }
-    
-    .sticky-nav ul li a {
-        font-size: 0.8rem;
-        padding: 4px 8px;
-    }
-    
     .name-plate {
         left: 20px;
         font-size: 1rem;
@@ -770,6 +833,13 @@ canvas {
         width: 100%;
         font-size: 1.2rem;
         padding: 10px;
+    }
+    .left {
+        text-align: left;
+    }
+    
+    .right {
+        text-align: left;
     }
     
     /* Work section */
@@ -805,90 +875,8 @@ canvas {
     .skills-grid {
         grid-template-columns: 1fr;
     }
-    
-    
-    
     .now-playing-container:hover {
-        width: 90%;
-    }
-}
-
-/* Smaller mobile devices */
-@media (max-width: 480px) {
-    nav ul li a {
-        font-size: 2rem;
-    }
-    
-    .sticky-nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    .about-section {
-        font-size: 1rem;
-    }
-    
-    .work-heading {
-        font-size: 1.8rem;
-    }
-    
-    .work-title {
-        font-size: 1.5rem;
-    }
-    
-    .faq-title {
-        font-size: 1.8rem;
-    }
-    
-    .faq-item h2 {
-        font-size: 1.2rem;
-    }
-}@media (max-width: 768px) {
-    /* Hide side elements */
-    .left-element, 
-    .right-element {
-        display: none !important;
-    }
-    
-    /* Centered info section */
-    .info {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: 90%;
-        max-width: 400px;
-        text-align: center;
-        margin: 0;
-        padding: 20px;
-    }
-    
-    /* Move skills section higher */
-    #skills {
-        margin-top: 2rem !important;
-        padding: 2rem 1rem !important;
-    }
-    
-    .skills-container {
-        margin: 5vh auto 20px !important;
-    }
-    
-    /* Navigation adjustments */
-    .sticky-nav {
-        z-index: 1001;
-    }
-    
-    /* Now playing widget */
-    .now-playing-container {
-        width: 90%;
-        right: 5%;
-        bottom: 10px;
-        z-index: 1000;
-    }
-    
-    /* About section adjustments */
-    .about-container {
-        margin-top: 120vh; /* Push below centered info */
+        width: 80%;
     }
 }
 
@@ -913,6 +901,85 @@ canvas {
         font-weight: bold;
     }
 }
+
+
+
+
+/* Hide left/right elements and adjust info on mobile */
+@media (max-width: 768px) {
+
+    .left-element, 
+    .right-element {
+        display: none !important;
+    }
+
+    .corner {
+        display: none;
+    }
+
+    .sticky-nav {
+        display: none; /* Hides the sticky nav on mobile */
+    }
+    .info {
+        position: absolute; /* Position it relative to the viewport */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Center it precisely */
+        width: 80%; /* Adjust width if needed */
+        max-width: 600px; /* Prevent it from getting too wide */
+        padding: 20px;
+        text-align: center;
+    }
+    
+    /* Move skills section much higher */
+    #skills {
+        margin-top: 2rem !important; /* Reduced from 12rem */
+        padding: 2rem 1rem !important;
+    }
+    
+    .skills-container {
+        margin: 5vh auto 20px !important; /* Changed from 50vh */
+    }
+    
+    /* Ensure contact link is visible above now playing */
+    .sticky-nav {
+        z-index: 1001; /* Above now playing */
+    }
+    
+    /* Adjust now playing container */
+    .now-playing-container {
+        width: 60%;
+        height: 15%;
+        right: 5%;
+        bottom: 10px;
+        z-index: 1000;
+    }
+    .now-playing-container:hover {
+        width: 70%;
+    }
+    
+       
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+    #skills {
+        margin-top: 1rem !important;
+        padding: 1.5rem 0.5rem !important;
+    }
+    
+    .skills-container {
+        margin: 2vh auto 10px !important;
+    }
+    
+    /* Make contact link more prominent */
+    .sticky-nav ul li a[href*="#contact"] {
+        background: rgba(233, 214, 179, 0.3);
+        font-weight: bold;
+    }
+}
+
+
 /* Mobile Navigation Styles */
 @media (max-width: 768px) {
     /* Hamburger menu button */
@@ -1027,3 +1094,4 @@ canvas {
         display: none;
     }
 }
+

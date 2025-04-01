@@ -230,34 +230,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 // Mobile menu toggle functionality
-document.addEventListener('DOMContentLoaded', function() {
-    // Check if mobile device
-    if (window.innerWidth <= 768) {
-        // Add mobile menu toggle button
-        const menuToggle = document.createElement('div');
-        menuToggle.innerHTML = '☰';
-        menuToggle.style.position = 'fixed';
-        menuToggle.style.top = '20px';
-        menuToggle.style.right = '20px';
-        menuToggle.style.fontSize = '24px';
-        menuToggle.style.cursor = 'pointer';
-        menuToggle.style.zIndex = '1001';
-        menuToggle.style.color = '#e9d6b3';
-        document.body.appendChild(menuToggle);
-        
-        // Toggle nav visibility
-        const nav = document.querySelector('nav');
-        nav.style.display = 'none';
-        
-        menuToggle.addEventListener('click', function() {
-            if (nav.style.display === 'none') {
-                nav.style.display = 'block';
-            } else {
-                nav.style.display = 'none';
-            }
-        });
-    }
-});
+
+// Mobile menu toggle functionality
+
 // Ensure contact link stays visible when scrolling
 document.addEventListener('DOMContentLoaded', function() {
     if (window.innerWidth <= 768) {

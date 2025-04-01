@@ -6,9 +6,48 @@
     <title>Minimalist Portfolio</title>
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r174/three.min.js"></script>
 </head>
 <body>
+
+    <style>
+        /* Mobile-Friendly Navigation */
+        .menu-toggle {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .sticky-nav ul {
+            display: flex;
+            gap: 20px;
+        }
+        @media (max-width: 768px) { /* Adjust breakpoint as needed */
+    .sticky-nav-name {
+        display: none;
+    }
+}
+
+
+        @media screen and (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            .sticky-nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                text-align: center;
+                padding: 20px;
+            }
+            .sticky-nav ul.active {
+                display: flex;
+            }
+        }
+    </style>
     <div class="sticky-nav">
         
         <div class="name-plate">Luyanda jnr. Zondi</div>
@@ -358,7 +397,7 @@ style="
 
 <a href="https://kaput-mulberry-314.notion.site/Contact-1c7732c3c166809da652d95bca0a5c8a?pvs=4" target="_blank" 
   style="display: flex; align-items: center; text-decoration: none; color: #e9d6b3; 
-         font-size: 2rem; font-family: 'NewYork', serif;">
+         font-size: 1.4rem; font-family: 'NewYork', serif;">
    Contact Me | 联系我
    <svg width="28" height="48" viewBox="0 0 24 24" fill="none" 
         xmlns="http://www.w3.org/2000/svg" style="margin-left: 12px;">
@@ -367,6 +406,10 @@ style="
    </svg>
 </a>
 </div>
-
+<script>
+    function toggleMenu() {
+        document.getElementById("nav-menu").classList.toggle("active");
+    }
+</script>
 </body>
 </html>
