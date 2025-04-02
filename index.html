@@ -2,11 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Luyanda Jnr Zondi Portfolio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="tapicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="tapicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="tapicon/favicon-16x16.png">
+<link rel="manifest" href="tapicon/site.webmanifest">
     <link rel="stylesheet" href="style.css">
-
-    <title>Luyanda Jnr Zondi</title>
-    
 </head>
 <body>
     <div class="landing-container">
@@ -14,42 +17,6 @@
         <div class="portfolio-text">Portfolio</div>
         <div class="loading-bar"></div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Elements
-            const name = document.querySelector('.name');
-            const portfolioText = document.querySelector('.portfolio-text');
-            const loadingBar = document.querySelector('.loading-bar');
-            const container = document.querySelector('.landing-container');
-            
-            // Animation sequence
-            setTimeout(() => {
-                name.classList.add('animate-in');
-            }, 500);
-            
-            setTimeout(() => {
-                portfolioText.classList.add('animate-in');
-            }, 1000);
-            
-            setTimeout(() => {
-                loadingBar.style.width = '200px';
-            }, 1500);
-            
-            // Redirect after animations complete
-            setTimeout(() => {
-                container.classList.add('animate-out');
-            }, 3500);
-            
-            setTimeout(() => {
-                window.location.href = "main.html"; // Change to your actual portfolio page
-            }, 4500);
-            
-            // Optional: Skip animation if user clicks
-            document.addEventListener('click', function() {
-                window.location.href = "main.html";
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

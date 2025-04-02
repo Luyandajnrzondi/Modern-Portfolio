@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="tapicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="tapicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="tapicon/favicon-16x16.png">
+<link rel="manifest" href="tapicon/site.webmanifest">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-light: #818cf8;
+            --primary-dark: #4f46e5;
+            --dark: #1e293b;
+            --darker: #0f172a;
+            --gray: #64748b;
+            --light-gray: #f1f5f9;
+            --lighter-gray: #f8fafc;
+            --accent: #a855f7;
+            --accent-light: #c084fc;
+            --white: #ffffff;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --glass: rgba(255, 255, 255, 0.08);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--lighter-gray);
+            color: var(--dark);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .resume {
+            width: 100%;
+            max-width: 1000px;
+            background: var(--white);
+            padding: 4rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            display: grid;
+            grid-template-columns: 1fr 1.8fr;
+            grid-gap: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .resume::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+        
+        header {
+            grid-column: 1 / -1;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        
+        .header-content {
+            flex: 1;
+        }
+        
+        .header-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--white);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--darker);
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 80%;
+        }
+        
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            border-right: 1px solid var(--light-gray);
+            padding-right: 2rem;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+        
+        section {
+            margin-bottom: 2rem;
+        }
+        
+        h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--darker);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        h2::before {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        li {
+            margin-bottom: 0.75rem;
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--gray);
+        }
+        
+        li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary-light);
+            border-radius: 50%;
+        }
+        
+        .job, .education-item, .project {
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--light-gray);
+        }
+        
+        .job:last-child, .education-item:last-child, .project:last-child {
+            margin-bottom: 0;
+        }
+        
+        .job-title, .degree, .project-title {
+            font-weight: 700;
+            color: var(--darker);
+            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
+        }
+        
+        .company, .school {
+            font-weight: 600;
+            color: var(--gray);
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .company::before, .school::before {
+            content: '•';
+            color: var(--primary-light);
+        }
+        
+        .date {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-bottom: 0.8rem;
+            display: inline-block;
+            background: var(--light-gray);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        
+        .job-description, .degree-description, .project-description {
+            color: var(--gray);
+            margin-top: 0.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+        
+        .contact-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+        
+        .contact-text {
+            flex: 1;
+        }
+        
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+        
+        .skill-tags, .hobby-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+        
+        .skill-tag, .hobby-tag {
+            background-color: var(--light-gray);
+            color: var(--darker);
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover, .hobby-tag:hover {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(99, 102, 241, 0.2);
+        }
+        
+        .language {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            align-items: center;
+        }
+        
+        .language-name {
+            font-weight: 600;
+            color: var(--darker);
+        }
+        
+        .language-level {
+            color: var(--gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background-color: var(--light-gray);
+            border-radius: 3px;
+            margin-top: 0.3rem;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 3px;
+        }
+        
+        .fluent { width: 100%; }
+        .proficient { width: 80%; }
+        .intermediate { width: 60%; }
+        .basic { width: 40%; }
+        
+        /* Download Button Styles */
+        .download-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(99, 102, 241, 0.4);
+        }
+        
+        .download-btn:active {
+            transform: translateY(0);
+        }
+        
+        .download-btn svg {
+            transition: transform 0.3s ease;
+        }
+        
+        .download-btn:hover svg {
+            transform: translateY(2px);
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        section {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        section:nth-child(1) { animation-delay: 0.1s; }
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.3s; }
+        section:nth-child(4) { animation-delay: 0.4s; }
+        section:nth-child(5) { animation-delay: 0.5s; }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .resume {
+                grid-template-columns: 1fr;
+                padding: 3rem;
+            }
+            
+            .sidebar {
+                border-right: none;
+                padding-right: 0;
+                border-bottom: 1px solid var(--light-gray);
+                padding-bottom: 2.5rem;
+            }
+            
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            header p {
+                max-width: 100%;
+            }
+            
+            .header-image {
+                width: 80px;
+                height: 80px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .resume {
+                padding: 2rem;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .download-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume" id="resume-content">
+        <header>
+            <div class="header-content">
+                <h1>LUYANDA JUNIOR ZONDI</h1>
+                <p>Information Technology Specialist | Full Stack Developer</p>
+            </div>
+            <!-- Placeholder for profile image - replace with actual image -->
+                <img src="images/profile.png" alt="Profile Image" class="header-image">
+        </header>
+
+        <div class="sidebar">
+            <section class="contact">
+                <h2>Contact</h2>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg width="79px" height="79px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M9.83824 18.4467C10.0103 18.7692 10.1826 19.0598 10.3473 19.3173C8.59745 18.9238 7.07906 17.9187 6.02838 16.5383C6.72181 16.1478 7.60995 15.743 8.67766 15.4468C8.98112 16.637 9.40924 17.6423 9.83824 18.4467ZM11.1618 17.7408C10.7891 17.0421 10.4156 16.1695 10.1465 15.1356C10.7258 15.0496 11.3442 15 12.0001 15C12.6559 15 13.2743 15.0496 13.8535 15.1355C13.5844 16.1695 13.2109 17.0421 12.8382 17.7408C12.5394 18.3011 12.2417 18.7484 12 19.0757C11.7583 18.7484 11.4606 18.3011 11.1618 17.7408ZM9.75 12C9.75 12.5841 9.7893 13.1385 9.8586 13.6619C10.5269 13.5594 11.2414 13.5 12.0001 13.5C12.7587 13.5 13.4732 13.5593 14.1414 13.6619C14.2107 13.1384 14.25 12.5841 14.25 12C14.25 11.4159 14.2107 10.8616 14.1414 10.3381C13.4732 10.4406 12.7587 10.5 12.0001 10.5C11.2414 10.5 10.5269 10.4406 9.8586 10.3381C9.7893 10.8615 9.75 11.4159 9.75 12ZM8.38688 10.0288C8.29977 10.6478 8.25 11.3054 8.25 12C8.25 12.6946 8.29977 13.3522 8.38688 13.9712C7.11338 14.3131 6.05882 14.7952 5.24324 15.2591C4.76698 14.2736 4.5 13.168 4.5 12C4.5 10.832 4.76698 9.72644 5.24323 8.74088C6.05872 9.20472 7.1133 9.68686 8.38688 10.0288ZM10.1465 8.86445C10.7258 8.95042 11.3442 9 12.0001 9C12.6559 9 13.2743 8.95043 13.8535 8.86447C13.5844 7.83055 13.2109 6.95793 12.8382 6.2592C12.5394 5.69894 12.2417 5.25156 12 4.92432C11.7583 5.25156 11.4606 5.69894 11.1618 6.25918C10.7891 6.95791 10.4156 7.83053 10.1465 8.86445ZM15.6131 10.0289C15.7002 10.6479 15.75 11.3055 15.75 12C15.75 12.6946 15.7002 13.3521 15.6131 13.9711C16.8866 14.3131 17.9412 14.7952 18.7568 15.2591C19.233 14.2735 19.5 13.1679 19.5 12C19.5 10.8321 19.233 9.72647 18.7568 8.74093C17.9413 9.20477 16.8867 9.6869 15.6131 10.0289ZM17.9716 7.46178C17.2781 7.85231 16.39 8.25705 15.3224 8.55328C15.0189 7.36304 14.5908 6.35769 14.1618 5.55332C13.9897 5.23077 13.8174 4.94025 13.6527 4.6827C15.4026 5.07623 16.921 6.08136 17.9716 7.46178ZM8.67765 8.55325C7.61001 8.25701 6.7219 7.85227 6.02839 7.46173C7.07906 6.08134 8.59745 5.07623 10.3472 4.6827C10.1826 4.94025 10.0103 5.23076 9.83823 5.5533C9.40924 6.35767 8.98112 7.36301 8.67765 8.55325ZM15.3224 15.4467C15.0189 16.637 14.5908 17.6423 14.1618 18.4467C13.9897 18.7692 13.8174 19.0598 13.6527 19.3173C15.4026 18.9238 16.921 17.9186 17.9717 16.5382C17.2782 16.1477 16.3901 15.743 15.3224 15.4467ZM12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" fill="#6366f1"></path> </g></svg>
+                    </div>
+                    <div class="contact-text">
+                        <a href="https://luyandajnrzondi.github.io/Modern-Portfolio/" target="_blank">My Portfolio</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-text">
+                        <a href="https://wa.me/+27633622772">+27 63 362 2772</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-text">
+                        <a href="mailto:Luyandajnr19zondi@gmail.com">Luyandajnr19zondi@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.7 6.7 0 0 0 16 3.542a6.7 6.7 0 0 1-1.889.518 3.3 3.3 0 0 0 1.447-1.817 6.5 6.5 0 0 1-2.087.793A3.3 3.3 0 0 0 7.89 6.033a9.32 9.32 0 0 1-6.766-3.429 3.3 3.3 0 0 0 1.018 4.382A3.3 3.3 0 0 1 .64 6.575v.045a3.3 3.3 0 0 0 2.632 3.218 3.2 3.2 0 0 1-.865.115 3.2 3.2 0 0 1-.614-.057 3.3 3.3 0 0 0 3.066 2.277A6.6 6.6 0 0 1 .78 13.58a6.6 6.6 0 0 1-.78-.045A9.3 9.3 0 0 0 5.026 15"/>
+                        </svg>
+                    </div>
+                    <div class="contact-text">
+                        <a href="https://x.com/Luyanda_io" target="_blank">@Luyanda_io</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-text">
+                        <a href="https://www.instagram.com/luyanda.io/" target="_blank">@Luyanda.io</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="skills">
+                <h2>Technical Skills</h2>
+                <div class="skill-tags">
+                    <span class="skill-tag">HTML/CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">C#</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Networking</span>
+                    <span class="skill-tag">Automation</span>
+                    <span class="skill-tag">Robotics</span>
+                    <span class="skill-tag">Arduino</span>
+                    <span class="skill-tag">Raspberry Pi</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">UI/UX</span>
+                </div>
+            </section>
+
+            <section class="skills">
+                <h2>Soft Skills</h2>
+                <div class="skill-tags">
+                    <span class="skill-tag">Team Leadership</span>
+                    <span class="skill-tag">Problem Solving</span>
+                    <span class="skill-tag">Communication</span>
+                    <span class="skill-tag">Mentoring</span>
+                    <span class="skill-tag">Adaptability</span>
+                    <span class="skill-tag">Project Management</span>
+                </div>
+            </section>
+
+            <section class="languages">
+                <h2>Languages</h2>
+                <div class="language">
+                    <span class="language-name">IsiZulu</span>
+                    <span class="language-level">Fluent</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress fluent"></div>
+                </div>
+                
+                <div class="language">
+                    <span class="language-name">English</span>
+                    <span class="language-level">Fluent</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress fluent"></div>
+                </div>
+                
+                <div class="language">
+                    <span class="language-name">IsiXhosa</span>
+                    <span class="language-level">Proficient</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress proficient"></div>
+                </div>
+                
+                <div class="language">
+                    <span class="language-name">Sesotho</span>
+                    <span class="language-level">Proficient</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress proficient"></div>
+                </div>
+                
+                <div class="language">
+                    <span class="language-name">SiSwati</span>
+                    <span class="language-level">Proficient</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress proficient"></div>
+                </div>
+            </section>
+
+            <section class="personal-details">
+                <h2>Personal Details</h2>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                        </svg>
+                    </div>
+                    <div class="contact-text">
+                        <span>South Africa</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle style="fill:none;stroke:#6366f1;stroke-width:2;stroke-miterlimit:10;" cx="16" cy="12" r="6"></circle> <path style="fill:none;stroke:#6366f1;stroke-width:2;stroke-miterlimit:10;" d="M7,27c0-4.971,4.029-9,9-9s9,4.029,9,9"></path> </g></svg>
+                    </div>
+                    <div class="contact-text">
+                        <span>Male</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="main-content">
+            <section class="about">
+                <h2>Professional Summary</h2>
+                <p style="color: var(--gray); line-height: 1.7;">Innovative Information Technology graduate with expertise in full-stack development, automation, and robotics. Passionate about creating efficient systems and mentoring the next generation of tech enthusiasts. Proven ability to design, implement, and troubleshoot technical solutions while effectively communicating complex concepts to diverse audiences.</p>
+            </section>
+
+            <section class="work">
+                <h2>Work Experience</h2>
+                <div class="job">
+                    <div class="job-title">IT Intern</div>
+                    <div class="company">TechSolutions Pvt. Ltd.</div>
+                    <div class="date">June 2023 - August 2023</div>
+                    <ul>
+                        <li>Developed and maintained web applications using JavaScript, Python, and C#</li>
+                        <li>Implemented automation scripts that reduced manual processes by 30%</li>
+                        <li>Assisted in network management and troubleshooting for enterprise clients</li>
+                        <li>Collaborated with senior developers on code reviews and system optimizations</li>
+                    </ul>
+                </div>
+                <div class="job">
+                    <div class="job-title">Tech Mentor</div>
+                    <div class="company">Local Community Center</div>
+                    <div class="date">January 2023 - Present</div>
+                    <ul>
+                        <li>Lead coding workshops for high school students (Python, JavaScript, C#)</li>
+                        <li>Developed curriculum for introductory robotics and automation courses</li>
+                        <li>Mentored 15+ students in personal tech projects and career development</li>
+                        <li>Organized hackathons and tech competitions to foster innovation</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="education">
+                <h2>Education</h2>
+                <div class="education-item">
+                    <div class="degree">Bachelor of Information Technology (B.IT)</div>
+                    <div class="school">Nelson Mandela University</div>
+                    <div class="date">2021 - 2024</div>
+                    <ul>
+                        <li>Specialization in Automation and Robotics</li>
+                        <li>Graduated with distinction in Software Development courses</li>
+                        <li>Capstone project: Smart Home Automation System using IoT</li>
+                    </ul>
+                </div>
+                <div class="education-item">
+                    <div class="degree">Matriculation (Grade 12)</div>
+                    <div class="school">Menzi High School</div>
+                    <div class="date">2019</div>
+                    <ul>
+                        <li>Distinction in Mathematics and Physical Sciences</li>
+                        <li>Top 5% of graduating class</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="projects">
+                <h2>Key Projects</h2>
+                <div class="project">
+                    <div class="project-title">Smart Home Automation System</div>
+                    <div class="date">2023</div>
+                    <ul>
+                        <li>Developed an IoT-based system controlling lighting, temperature, and security</li>
+                        <li>Integrated Raspberry Pi with Arduino modules and custom mobile app</li>
+                        <li>Reduced energy consumption by 25% in prototype testing</li>
+                    </ul>
+                </div>
+                <div class="project">
+                    <div class="project-title">Community Coding Platform</div>
+                    <div class="date">2022 - Present</div>
+                    <ul>
+                        <li>Built a web platform for local students to collaborate on coding projects</li>
+                        <li>Features include real-time coding, mentorship matching, and resource sharing</li>
+                        <li>Currently used by 50+ active members in the community</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="hobbies">
+                <h2>Interests</h2>
+                <div class="hobby-tags">
+                    <span class="hobby-tag">Tech Meetups</span>
+                    <span class="hobby-tag">Open Source</span>
+                    <span class="hobby-tag">Robotics</span>
+                    <span class="hobby-tag">Fitness</span>
+                    <span class="hobby-tag">Esports</span>
+                    <span class="hobby-tag">Mentoring</span>
+                    <span class="hobby-tag">Content Creation</span>
+                </div>
+            </section>
+        </div>
+    </div>
+    <button class="download-btn" id="download-pdf">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+        </svg>
+        Download PDF
+    </button>
+
+    <script>
+        document.getElementById('download-pdf').addEventListener('click', function() {
+            const element = document.getElementById('resume-content');
+            const opt = {
+                margin: 10,
+                filename: 'Luyanda_Zondi_Resume.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, logging: true, useCORS: true },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            // Show loading state
+            const btn = this;
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" class="spinner">
+                    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zm0 2a6 6 0 1 0 0 12A6 6 0 0 0 8 2z" opacity=".25"/>
+                    <path d="M8 0a8 8 0 0 1 8 8h-2a6 6 0 0 0-6-6V0z">
+                        <animateTransform attributeName="transform" type="rotate" from="0 8 8" to="360 8 8" dur="1s" repeatCount="indefinite"/>
+                    </path>
+                </svg>
+                Generating PDF...
+            `;
+            btn.style.pointerEvents = 'none';
+            
+            // Generate PDF
+            html2pdf().set(opt).from(element).save().then(() => {
+                btn.innerHTML = originalHTML;
+                btn.style.pointerEvents = 'auto';
+            }).catch(err => {
+                console.error('PDF generation error:', err);
+                btn.innerHTML = originalHTML;
+                btn.style.pointerEvents = 'auto';
+            });
+        });
+    </script>
+</body>
+</html>

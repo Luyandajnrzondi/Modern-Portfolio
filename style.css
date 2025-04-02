@@ -1,125 +1,110 @@
 @font-face {
-    font-family: 'VogueFont';
-    src: url('fonts/Classyvogueregular.ttf') format('opentype');
+font-family: 'NewYork';
+src: url('fonts/NewYork PERSONAL USE.otf') format('opentype');
 }
-@font-face {
-    font-family: 'NewYork';
-    src: url('fonts/NewYork PERSONAL USE.otf') format('opentype');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-@font-face {
-    font-family: 'NT VALENTINO';
-    src: url('fonts/NT\ VALENTINO\ Italic\ \(Personal\ use\).otf') format('opentype');
-    src: url('fonts\NT VALENTINO Italic (Personal use).otf') format('opentype');
+
+body {
+    font-family: 'NewYork', serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #121212;
+    color: #e9d6b3;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
 }
-@font-face {
-    font-family: 'VELISTA';
-    src: url('fonts/VELISTA.ttf') format('opentype');
+
+.landing-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    padding: 20px;
 }
-@font-face {
-    font-family: 'SIGNATURE';
-    src: url('fonts/Paradise\ Signature.otf') format('opentype');
+
+.name {
+    font-family: 'NewYork', serif;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, #e9d6b3, #f5e7c8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
-  
-        /* Base Styles */
-        body {
-            font-family: 'NewYork', serif;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #121212;
-            color: #e9d6b3;
-            font-family: 'Arial', sans-serif;
-            overflow: hidden;
-        }
 
-        /* Animation Container */
-        .landing-container {
-            text-align: center;
-            position: relative;
-        }
+.portfolio-text {
+    font-family: 'NewYork', serif;
 
-        /* Name Animation */
-        .name {
-            font-family: 'NewYork', serif;
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            opacity: 0;
-            transform: translateY(20px);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            background: linear-gradient(90deg, #e9d6b3, #f5e7c8);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out 0.5s, transform 0.8s ease-out 0.5s;
+}
 
-        /* Portfolio Text Animation */
-        .portfolio-text {
-            font-size: 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            letter-spacing: 2px;
-            margin-bottom: 2rem;
-        }
+.loading-bar {
+    height: 3px;
+    width: 0;
+    background-color: #e9d6b3;
+    transition: width 1.5s ease-out 1s;
+    max-width: 80vw;
+}
 
-        /* Loading Animation */
-        .loading-bar {
-            width: 0;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #e9d6b3, transparent);
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
-        }
+.animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
 
-        .loading-bar::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(233, 214, 179, 0.8), transparent);
-            animation: loading 2s infinite;
-        }
+.animate-out {
+    animation: fadeOut 1s ease-out forwards;
+}
 
-        @keyframes loading {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
 
-        /* Animation Classes */
-        .animate-in {
-            animation: fadeInUp 1s forwards;
-        }
+/* Mobile-specific adjustments */
+@media (max-width: 600px) {
+    .name {
+        font-size: 1.8rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .portfolio-text {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .loading-bar {
+        height: 2px;
+    }
+}
 
-        .animate-out {
-            animation: fadeOut 1s forwards;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeOut {
-            to {
-                opacity: 0;
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .name {
-                font-size: 2.5rem;
-            }
-            .portfolio-text {
-                font-size: 1.5rem;
-            }
-        }
+@media (max-width: 400px) {
+    .name {
+        font-size: 1.5rem;
+    }
+    
+    .portfolio-text {
+        font-size: 1.1rem;
+    }
+}
