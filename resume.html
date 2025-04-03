@@ -430,6 +430,146 @@
                 font-size: 0.9rem;
             }
         }
+        .mobile-download-btn {
+        /* Positioning - Mobile first */
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9999;
+        
+        /* Layout */
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 14px 20px;
+        width: auto;
+        min-width: 140px;
+        
+        /* Visual Style */
+        background: var(--primary);
+        color: white;
+        border-radius: 50px;
+        text-decoration: none;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        border: none;
+        cursor: pointer;
+        overflow: hidden;
+        
+        /* Animation */
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .btn-icon {
+        display: flex;
+        transition: all 0.3s ease;
+    }
+    
+    .progress {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        width: 0%;
+        background: white;
+        transition: width 0.3s ease;
+    }
+    
+    /* Hover Effects (for desktop) */
+    @media (hover: hover) {
+        .mobile-download-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
+        }
+        
+        .mobile-download-btn:hover .btn-icon {
+            transform: translateY(2px);
+        }
+    }
+    
+    /* Active State (for mobile touch) */
+    .mobile-download-btn:active {
+        transform: scale(0.98);
+    }
+    
+    /* Downloading State */
+    .mobile-download-btn.downloading {
+        background: var(--accent);
+        pointer-events: none;
+    }
+    
+    .mobile-download-btn.downloading .btn-text {
+        animation: pulse 1s ease infinite;
+    }
+    
+    .mobile-download-btn.downloading .btn-icon {
+        animation: bounce 0.8s ease infinite;
+    }
+    
+    .mobile-download-btn.downloading .progress {
+        width: 100%;
+        transition: width 2s linear;
+    }
+    
+    /* Downloaded State */
+    .mobile-download-btn.downloaded {
+        background: var(--success);
+    }
+    
+    .mobile-download-btn.downloaded .btn-text::after {
+        content: " ✓";
+    }
+    
+    .mobile-download-btn.downloaded .btn-icon {
+        transform: scale(0);
+    }
+    
+    .mobile-download-btn.downloaded .progress {
+        background: rgba(255,255,255,0.5);
+    }
+    
+    /* Animations */
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; }
+    }
+    
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-4px); }
+    }
+    
+    /* Mobile-specific adjustments */
+    @media (max-width: 480px) {
+        .mobile-download-btn {
+            bottom: 15px;
+            right: 15px;
+            padding: 12px 18px;
+            font-size: 15px;
+            min-width: 120px;
+        }
+        
+        .btn-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+    }
+    
+    /* Tablet adjustments */
+    @media (min-width: 768px) {
+        .mobile-download-btn {
+            bottom: 25px;
+            right: 25px;
+            padding: 16px 24px;
+            font-size: 17px;
+            min-width: 160px;
+        }
+    }
     </style>
 </head>
 <body>
@@ -683,49 +823,48 @@
             </section>
         </div>
     </div>
-    <button class="download-btn" id="download-pdf">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-        </svg>
-        Download PDF
-    </button>
-
-    <script>
-        document.getElementById('download-pdf').addEventListener('click', function() {
-            const element = document.getElementById('resume-content');
-            const opt = {
-                margin: 10,
-                filename: 'Luyanda_Zondi_Resume.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2, logging: true, useCORS: true },
-                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            };
-
-            // Show loading state
-            const btn = this;
-            const originalHTML = btn.innerHTML;
-            btn.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" class="spinner">
-                    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zm0 2a6 6 0 1 0 0 12A6 6 0 0 0 8 2z" opacity=".25"/>
-                    <path d="M8 0a8 8 0 0 1 8 8h-2a6 6 0 0 0-6-6V0z">
-                        <animateTransform attributeName="transform" type="rotate" from="0 8 8" to="360 8 8" dur="1s" repeatCount="indefinite"/>
-                    </path>
-                </svg>
-                Generating PDF...
-            `;
-            btn.style.pointerEvents = 'none';
+    <a href="images/Luyanda_Jnr_Zondi_Resume.pdf" class="mobile-download-btn" download>
+        <span class="btn-text">Download CV</span>
+        <span class="btn-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+        </span>
+        <span class="progress"></span>
+    </a>
+    
+<script>
+    const downloadBtn = document.querySelector('.mobile-download-btn');
+    
+    downloadBtn.addEventListener('click', function() {
+        const btn = this;
+        
+        // Set downloading state
+        btn.classList.add('downloading');
+        
+        // Simulate download (replace with actual download logic)
+        setTimeout(() => {
+            btn.classList.remove('downloading');
+            btn.classList.add('downloaded');
             
-            // Generate PDF
-            html2pdf().set(opt).from(element).save().then(() => {
-                btn.innerHTML = originalHTML;
-                btn.style.pointerEvents = 'auto';
-            }).catch(err => {
-                console.error('PDF generation error:', err);
-                btn.innerHTML = originalHTML;
-                btn.style.pointerEvents = 'auto';
-            });
-        });
-    </script>
-</body>
+            // Reset after 3 seconds
+            setTimeout(() => {
+                btn.classList.remove('downloaded');
+                btn.querySelector('.progress').style.width = '0%';
+            }, 3000);
+        }, 2000);
+    });
+    
+    // Better touch feedback for mobile
+    downloadBtn.addEventListener('touchstart', function() {
+        this.style.transform = 'scale(0.98)';
+    });
+    
+    downloadBtn.addEventListener('touchend', function() {
+        this.style.transform = '';
+    });
+</script>
+    </body>
 </html>
