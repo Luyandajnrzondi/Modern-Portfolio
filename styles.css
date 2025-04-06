@@ -25,7 +25,7 @@ body {
     padding: 0;
     height: 100vh;
     position: relative;
-    background: #000000; /* Default solid background */
+    background: #07120e; /* Default solid background */
     color: #e9d6b3; /* Make text white */
     user-select: none; /* Prevents text selection */
     -webkit-user-select: none;
@@ -172,13 +172,13 @@ h2 {
 
 p {
     font-size: 14px;
-    color: black;
+    color: #07120e;
     margin: 5px 0;
 }
 
 a {
     text-decoration: underline;
-    color: black;
+    color: #07120e;
 }
 
 
@@ -223,7 +223,7 @@ a {
     top: -100px;
     left: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(13, 32, 24, 0); /* where 0 = fully transparent */
     backdrop-filter: blur(5px);
     padding: 15px 0;
     display: flex; /* Changed to flex */
@@ -311,7 +311,7 @@ a {
 }
 
 .work-container {
-    background: #000;
+    background: #07120e;
     color: #fff;
     font-family: 'NewYork', sans-serif;
     margin: 0;
@@ -585,7 +585,7 @@ canvas {
     width: 300px;
     max-width: 400px;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.7);
+    background: #07120e;
     backdrop-filter: blur(5px);
     border: 1px solid #e9d6b3;
     border-radius: 2px;
