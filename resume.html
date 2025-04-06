@@ -3,14 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luyanda Zondi- Modern Resume</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="tapicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="tapicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="tapicon/favicon-16x16.png">
-    <link rel="manifest" href="tapicon/site.webmanifest">
+    <title>Charles Bruyerre - Modern Resume</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- html2pdf.js library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
          :root {
@@ -325,125 +322,30 @@
                     <span class="skill-tag">Project Management</span>
                 </div>
             </section>
-           
-                
-            <style>
-                /* Language Progress Bars - Responsive */
-                .language {
-                    margin-bottom: 1.2rem;
-                    display: flex;
-                    flex-direction: column;
-                }
-                
-                .language-info {
-                    display: flex;
-                    justify-content: space-between;
-                    margin-bottom: 0.4rem;
-                    flex-wrap: wrap;
-                }
-                
-                .language-name {
-                    font-weight: 500;
-                    color: var(--dark);
-                    margin-right: 0.5rem;
-                }
-                
-                .language-level {
-                    color: var(--gray);
-                    font-size: 0.85rem;
-                }
-                
-                .progress-container {
-                    width: 100%;
-                    height: 6px;
-                    background-color: var(--light-gray);
-                    border-radius: 3px;
-                    overflow: hidden;
-                }
-                
-                .progress-bar {
-                    height: 100%;
-                    border-radius: 3px;
-                    background-color: var(--primary);
-                    transition: width 0.6s ease;
-                }
-                
-                /* Mobile Adjustments */
-                @media (max-width: 768px) {
-                    .language {
-                        margin-bottom: 1rem;
-                    }
-                    
-                    .language-info {
-                        flex-direction: column;
-                        margin-bottom: 0.3rem;
-                    }
-                    
-                    .language-level {
-                        margin-top: 0.2rem;
-                        font-size: 0.8rem;
-                    }
-                    
-                    .progress-container {
-                        height: 5px;
-                    }
-                }
-                
-                /* Animation for progress bars */
-                @keyframes progressAnimation {
-                    from { width: 0; }
-                    to { width: 100%; }
-                }
-                </style>
-                
-                <section class="languages">
-                    <h2>Languages</h2>
-                    <div class="language">
-                        <div class="language-info">
-                            <span class="language-name">IsiZulu</span>
-                            <span class="language-level">Fluent (Native)</span>
-                        </div>
-                        <div class="progress-container">
-                            <div class="progress-bar" style="width: 100%;"></div>
-                        </div>
-                    </div>
-                    <div class="language">
-                        <div class="language-info">
-                            <span class="language-name">English</span>
-                            <span class="language-level">Fluent</span>
-                        </div>
-                        <div class="progress-container">
-                            <div class="progress-bar" style="width: 95%;"></div>
-                        </div>
-                    </div>
-                    <div class="language">
-                        <div class="language-info">
-                            <span class="language-name">IsiXhosa</span>
-                            <span class="language-level">Proficient</span>
-                        </div>
-                        <div class="progress-container">
-                            <div class="progress-bar" style="width: 75%;"></div>
-                        </div>
-                    </div>
-                    <div class="language">
-                        <div class="language-info">
-                            <span class="language-name">Sesotho</span>
-                            <span class="language-level">Intermediate</span>
-                        </div>
-                        <div class="progress-container">
-                            <div class="progress-bar" style="width: 60%;"></div>
-                        </div>
-                    </div>
-                    <div class="language">
-                        <div class="language-info">
-                            <span class="language-name">SiSwati</span>
-                            <span class="language-level">Intermediate</span>
-                        </div>
-                        <div class="progress-container">
-                            <div class="progress-bar" style="width: 55%;"></div>
-                        </div>
-                    </div>
-                </section>
+
+            <section class="languages">
+                <h2>Languages</h2>
+                <div class="language">
+                    <span class="language-name">IsiZulu</span>
+                    <span class="language-level">Fluent</span>
+                </div>
+                <div class="language">
+                    <span class="language-name">English</span>
+                    <span class="language-level">Fluent</span>
+                </div>
+                <div class="language">
+                    <span class="language-name">IsiXhosa</span>
+                    <span class="language-level">Proficient</span>
+                </div>
+                <div class="language">
+                    <span class="language-name">Sesotho</span>
+                    <span class="language-level">Proficient</span>
+                </div>
+                <div class="language">
+                    <span class="language-name">SiSwati</span>
+                    <span class="language-level">Proficient</span>
+                </div>
+            </section>
 
             <section class="awards">
                 <h2>Personal Details</h2>
@@ -459,26 +361,26 @@
 
             <section class="hobbies">
                 <h2>Hobbies and Interests</h2>
-                <div class="skill-tags">
-                    <span class="skill-tag">Programming</span>
-                    <span class="skill-tag">Gaming</span>
-                    <span class="skill-tag">Gym</span>
-                    <span class="skill-tag">Soccer</span>
-                    <span class="skill-tag">Rugby</span>
-                    <span class="skill-tag">Tech Meetups</span>
-                    <span class="skill-tag">Content Creation</span>
+                <div class="hobby-tags">
+                    <span class="hobby-tag">Programming</span>
+                    <span class="hobby-tag">Gaming</span>
+                    <span class="hobby-tag">Gym</span>
+                    <span class="hobby-tag">Soccer</span>
+                    <span class="hobby-tag">Rugby</span>
+                    <span class="hobby-tag">Tech Meetups</span>
+                    <span class="hobby-tag">Content Creation</span>
                 </div>
             </section>
             <section class="hobbies">
                 <h2>Interests</h2>
-                <div class="skill-tags">
-                    <span class="skill-tag">Tech Meetups</span>
-                    <span class="skill-tag">Open Source</span>
-                    <span class="skill-tag">Robotics</span>
-                    <span class="skill-tag">Fitness</span>
-                    <span class="skill-tag">Esports</span>
-                    <span class="skill-tag">Mentoring</span>
-                    <span class="skill-tag">Content Creation</span>
+                <div class="hobby-tags">
+                    <span class="hobby-tag">Tech Meetups</span>
+                    <span class="hobby-tag">Open Source</span>
+                    <span class="hobby-tag">Robotics</span>
+                    <span class="hobby-tag">Fitness</span>
+                    <span class="hobby-tag">Esports</span>
+                    <span class="hobby-tag">Mentoring</span>
+                    <span class="hobby-tag">Content Creation</span>
                 </div>
             </section>
         </div>
