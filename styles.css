@@ -124,6 +124,24 @@ body::before {
     transition: opacity 2.5s ease-in-out;
 }
 
+@media (max-width: 768px) {
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('images/wallpaperflare.com_wallpaper (4).jpg') no-repeat;
+      background-size: cover;
+      background-position: 48% center; 
+      background-attachment: fixed;
+      z-index: -1;
+      opacity: 1;
+      transition: opacity 2.5s ease-in-out;
+    }
+  }
+
 /* Fading effect when scrolling */
 body.scrolled::before {
     opacity: 0;
