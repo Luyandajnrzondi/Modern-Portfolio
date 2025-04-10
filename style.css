@@ -1,6 +1,31 @@
 @font-face {
-font-family: 'NewYork';
-src: url('fonts/NewYork PERSONAL USE.otf') format('opentype');
+    font-family: 'NewYork';
+    src: url('fonts/NewYork PERSONAL USE.otf') format('opentype');
+}
+@font-face {
+    font-family: 'agilera';
+    src: url('fonts/agilera.otf') format('opentype');
+}
+@font-face {
+    font-family: 'merderka';
+    src: url('fonts/merdekamahardikademoversionregular-jpap7.otf') format('opentype');
+}
+@font-face {
+    font-family: 'wolfburg';
+    src: url('fonts/Wolfsburg.otf') format('opentype');
+}
+@font-face {
+    font-family: 'vania';
+    src: url('fonts/vania.otf') format('opentype');
+}
+
+:root {
+    /* Color Variables */
+    --primary-bg: #0d2018;
+    --primary-text: #ECE5d8;
+    --gradient-start: #ECE5d8;
+    --gradient-end: #f5e7c8;
+    --loading-bar: #ECE5d8;
 }
 
 * {
@@ -10,15 +35,15 @@ src: url('fonts/NewYork PERSONAL USE.otf') format('opentype');
 }
 
 body {
-    font-family: 'NewYork', serif;
+    font-family: 'merderka', serif;
     margin: 0;
     padding: 0;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #0d2018;
-    color: #e9d6b3;
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
     font-family: 'Arial', sans-serif;
     overflow: hidden;
 }
@@ -35,15 +60,14 @@ body {
 }
 
 .name {
-    font-family: 'NewYork', serif;
-    font-size: 3rem;
-    font-weight: bold;
+    font-family: 'merderka', serif;
+    font-size: 6rem;
     margin-bottom: 1rem;
     opacity: 0;
     transform: translateY(20px);
     text-transform: uppercase;
     letter-spacing: 3px;
-    background: linear-gradient(90deg, #e9d6b3, #f5e7c8);
+    background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -51,7 +75,6 @@ body {
 
 .portfolio-text {
     font-family: 'NewYork', serif;
-
     font-size: 1.5rem;
     margin-bottom: 2rem;
     opacity: 0;
@@ -62,7 +85,7 @@ body {
 .loading-bar {
     height: 3px;
     width: 0;
-    background-color: #e9d6b3;
+    background-color: var(--loading-bar);
     transition: width 1.5s ease-out 1s;
     max-width: 80vw;
 }
