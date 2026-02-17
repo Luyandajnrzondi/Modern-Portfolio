@@ -6,56 +6,176 @@
     <title>Luyanda Jnr Zondi</title>
     <link rel="stylesheet" href="style.css">
     <link rel="apple-touch-icon" sizes="180x180" href="tapicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="tapicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="tapicon/favicon-16x16.png">
-<link rel="manifest" href="tapicon/site.webmanifest">
+    <link rel="icon" type="image/png" sizes="32x32" href="tapicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="tapicon/favicon-16x16.png">
+    <link rel="manifest" href="tapicon/site.webmanifest">
 </head>
 <body>
+    <!-- Film grain overlay -->
+    <div class="film-grain"></div>
+    
+    <!-- Cinematic letterbox bars -->
+    <div class="letterbox letterbox-top"></div>
+    <div class="letterbox letterbox-bottom"></div>
+
+    <!-- Particle canvas -->
+    <canvas id="particle-canvas"></canvas>
+
     <div class="landing-container">
-        <div class="name">Luyanda Jnr Zondi</div>
-        <div class="portfolio-text">Portfolio</div>
-        <div class="loading-bar"></div>
+        <div class="landing-frame">
+            <div class="corner-mark top-left"></div>
+            <div class="corner-mark top-right"></div>
+            <div class="corner-mark bottom-left"></div>
+            <div class="corner-mark bottom-right"></div>
+        </div>
+
+        <div class="landing-content">
+            <div class="subtitle-line">
+                <span class="line-accent"></span>
+                <span class="subtitle-text">PORTFOLIO</span>
+                <span class="line-accent"></span>
+            </div>
+            <div class="name">Luyanda Jnr Zondi</div>
+            <div class="role-text">Developer &middot; Designer &middot; Photographer</div>
+            <div class="loading-bar-container">
+                <div class="loading-bar"></div>
+            </div>
+            <div class="enter-hint">Click anywhere to enter</div>
+        </div>
+
+        <div class="landing-footer">
+            <span class="year-text">&copy; 2026</span>
+            <span class="location-text">Durban, South Africa</span>
+        </div>
     </div>
 
     <script>
+        // Particle system
+        (function() {
+            const canvas = document.getElementById('particle-canvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            let mouse = { x: null, y: null };
+            const particleCount = 120;
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            function createParticle() {
+                return {
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 2 + 0.5,
+                    speedX: (Math.random() - 0.5) * 0.4,
+                    speedY: (Math.random() - 0.5) * 0.4,
+                    opacity: Math.random() * 0.5 + 0.1
+                };
+            }
+
+            function init() {
+                resize();
+                particles = [];
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push(createParticle());
+                }
+            }
+
+            function drawParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach((p, i) => {
+                    p.x += p.speedX;
+                    p.y += p.speedY;
+
+                    if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+                    if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(233, 214, 179, ${p.opacity})`;
+                    ctx.fill();
+
+                    // Connect nearby particles with lines
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = p.x - particles[j].x;
+                        const dy = p.y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 120) {
+                            ctx.beginPath();
+                            ctx.moveTo(p.x, p.y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = `rgba(233, 214, 179, ${0.06 * (1 - dist / 120)})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.stroke();
+                        }
+                    }
+                });
+                requestAnimationFrame(drawParticles);
+            }
+
+            window.addEventListener('resize', resize);
+            init();
+            drawParticles();
+        })();
+
         document.addEventListener('DOMContentLoaded', function() {
-            // Elements
             const name = document.querySelector('.name');
-            const portfolioText = document.querySelector('.portfolio-text');
+            const subtitle = document.querySelector('.subtitle-line');
+            const role = document.querySelector('.role-text');
             const loadingBar = document.querySelector('.loading-bar');
             const container = document.querySelector('.landing-container');
-            
-            // Animation sequence
+            const corners = document.querySelectorAll('.corner-mark');
+            const hint = document.querySelector('.enter-hint');
+            const footer = document.querySelector('.landing-footer');
+
+            // Staggered cinematic entrance
+            setTimeout(() => {
+                corners.forEach(c => c.classList.add('animate-in'));
+            }, 300);
+
+            setTimeout(() => {
+                subtitle.classList.add('animate-in');
+            }, 600);
+
             setTimeout(() => {
                 name.classList.add('animate-in');
-            }, 500);
-            
+            }, 900);
+
             setTimeout(() => {
-                portfolioText.classList.add('animate-in');
-            }, 1000);
-            
+                role.classList.add('animate-in');
+            }, 1200);
+
             setTimeout(() => {
-                loadingBar.style.width = '70%'; // Percentage based for mobile
+                loadingBar.style.width = '100%';
             }, 1500);
-            
-            // Redirect after animations complete
+
+            setTimeout(() => {
+                hint.classList.add('animate-in');
+                footer.classList.add('animate-in');
+            }, 2500);
+
+            // Redirect after animations
             setTimeout(() => {
                 container.classList.add('animate-out');
-            }, 3500);
-            
+            }, 6000);
+
             setTimeout(() => {
-                window.location.href = "main.html"; // Change to your actual portfolio page
+                window.location.href = "main.html";
             }, 7500);
-            
-            // Touch/click to skip
-            document.addEventListener('click', function() {
-                window.location.href = "main.html";
-            });
-            
-            // Also respond to touch events
-            document.addEventListener('touchend', function() {
-                window.location.href = "main.html";
-            });
+
+            // Skip on click/touch
+            let navigating = false;
+            function navigate() {
+                if (navigating) return;
+                navigating = true;
+                container.classList.add('animate-out');
+                setTimeout(() => {
+                    window.location.href = "main.html";
+                }, 800);
+            }
+            document.addEventListener('click', navigate);
+            document.addEventListener('touchend', navigate);
         });
     </script>
 </body>
