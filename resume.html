@@ -3,7 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luyanda Zondi - Resume</title>
+    <title>Luyanda Zondi - Resume | Full-Stack Developer & Designer</title>
+    <meta name="description" content="Resume of Luyanda Jnr Zondi - Full-stack web developer, designer, and IT specialist based in Durban, South Africa. View experience, skills, and education.">
+    <meta name="author" content="Luyanda Jnr Zondi">
+    <meta property="og:title" content="Luyanda Zondi - Resume">
+    <meta property="og:description" content="Full-stack web developer and designer based in Durban, South Africa. View experience, skills, and education.">
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://luyandajnrzondi.vercel.app/resume.html">
+    <meta property="og:image" content="https://luyandajnrzondi.vercel.app/images/herobg-hd.webp">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Luyanda Zondi - Resume">
+    <meta name="twitter:description" content="Full-stack web developer based in Durban, South Africa.">
+    <meta name="theme-color" content="#07120e">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://luyandajnrzondi.vercel.app/resume.html">
     <link rel="apple-touch-icon" sizes="180x180" href="tapicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="tapicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="tapicon/favicon-16x16.png">
@@ -11,11 +24,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
     <style>
         @font-face {
             font-family: 'VELISTA';
             src: url('fonts/VELISTA.ttf') format('truetype');
+            font-display: swap;
         }
 
         :root {
@@ -55,13 +69,14 @@
             position: fixed;
             top: -50%;
             left: -50%;
-            width: 200%;
-            height: 200%;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
             z-index: 9999;
             opacity: 0.03;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-            animation: grainDrift 0.8s steps(4) infinite;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            animation: grainDrift 0.5s steps(5) infinite;
         }
 
         @keyframes grainDrift {
@@ -376,6 +391,32 @@
             }
         }
     </style>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Luyanda Junior Zondi",
+        "jobTitle": "Full-Stack Web Developer & Designer",
+        "url": "https://luyandajnrzondi.vercel.app/",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Durban",
+            "addressCountry": "ZA"
+        },
+        "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Nelson Mandela University"
+        },
+        "knowsLanguage": ["en", "zu", "xh"],
+        "sameAs": [
+            "https://github.com/Luyandajnrzondi",
+            "https://www.instagram.com/luyanda.io/",
+            "https://www.twitter.com/luyanda_io/"
+        ]
+    }
+    </script>
 </head>
 <body>
     <a href="main.html" class="back-btn" id="backButton">

@@ -14,7 +14,14 @@
     <meta name="twitter:title" content="Luyanda Jnr Zondi - Portfolio">
     <meta name="twitter:description" content="Full-stack web developer and designer based in Durban, South Africa.">
     <meta name="theme-color" content="#07120e">
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="Luyanda Zondi, web developer, designer, portfolio, projects, Durban, South Africa, full-stack, WebGL">
+    <meta property="og:image" content="https://luyandajnrzondi.vercel.app/images/herobg-hd.webp">
+    <meta name="twitter:image" content="https://luyandajnrzondi.vercel.app/images/herobg-hd.webp">
     <link rel="canonical" href="https://luyandajnrzondi.vercel.app/main.html">
+    <link rel="preload" href="images/herobg-hd.webp" as="image">
+    <link rel="preload" href="fonts/VELISTA.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="fonts/NewYork PERSONAL USE.otf" as="font" type="font/otf" crossorigin>
     <link rel="stylesheet" href="styles.css">
     <link rel="apple-touch-icon" sizes="180x180" href="tapicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="tapicon/favicon-32x32.png">
@@ -132,7 +139,7 @@
         <div class="now-playing-content">
             <div class="album-art-container">
                 <a id="track-link" href="#" target="_blank" rel="noopener noreferrer">
-                    <img id="album-cover" src="https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png" alt="Album Art" class="album-art" crossorigin="anonymous">
+                    <img id="album-cover" src="https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png" alt="Album Art" class="album-art" crossorigin="anonymous" loading="lazy">
                 </a>
                 <div class="vinyl-overlay"></div>
             </div>
@@ -281,7 +288,7 @@
         <div class="faq-list" role="list">
             <div class="faq-item reveal-up" role="listitem">
                 <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
-                    <span>How did you make the background effect in this website?</span>
+                    <span id="faq-q-1">How did you make the background effect in this website?</span>
                     <span class="faq-icon" aria-hidden="true">+</span>
                 </button>
                 <div class="faq-answer" id="faq-answer-1" role="region" aria-labelledby="faq-q-1">
@@ -408,6 +415,7 @@
                         <path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
+                <div class="form-status" role="status" aria-live="polite"></div>
             </form>
         </div>
     </section>
@@ -419,6 +427,10 @@
             <div class="footer-brand">
                 <h3 class="footer-name">Luyanda Jnr Zondi</h3>
                 <p class="footer-tagline">Creating elegant digital experiences with attention to detail and thoughtful design.</p>
+                <div class="availability-badge">
+                    <span class="availability-dot" aria-hidden="true"></span>
+                    Available for freelance
+                </div>
             </div>
             <div class="footer-links">
                 <h4>Explore</h4>
@@ -434,6 +446,7 @@
                 <ul>
                     <li><a href="mailto:luyandajuniorzondi@gmail.com">Email Me</a></li>
                     <li><a href="Luyanda_Zondi.vcf" aria-label="Download contact card for Luyanda Zondi">Save Contact Card</a></li>
+                    <li><a href="https://github.com/Luyandajnrzondi" target="_blank" rel="noopener noreferrer">GitHub</a></li>
                     <li><a href="https://www.instagram.com/kvagaski/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
                     <li><a href="https://www.x.com/luyanda_io/" target="_blank" rel="noopener noreferrer">Twitter/X</a></li>
                 </ul>
@@ -444,6 +457,13 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Back to top -->
+    <button class="back-to-top" aria-label="Back to top">
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M8 13V3M3 7l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+
+    <script src="script.js" defer></script>
 </body>
 </html>
