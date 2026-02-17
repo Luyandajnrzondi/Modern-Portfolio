@@ -1,6 +1,17 @@
 @font-face {
     font-family: 'NewYork';
     src: url('fonts/NewYork PERSONAL USE.otf') format('opentype');
+    font-display: swap;
+}
+@font-face {
+    font-family: 'merderka';
+    src: url('fonts/merdekamahardikademoversionregular-jpap7.otf') format('opentype');
+    font-display: swap;
+}
+@font-face {
+    font-family: 'VELISTA';
+    src: url('fonts/VELISTA.ttf') format('truetype');
+    font-display: swap;
 }
 @font-face {
     font-family: 'agilera';
@@ -26,7 +37,7 @@
 :root {
     --primary-bg: #07120e;
     --primary-text: #e9d6b3;
-    --secondary-text: rgba(233, 214, 179, 0.6);
+    --secondary-text: rgba(233, 214, 179, 0.7);
     --accent: #c4a86b;
 }
 
@@ -292,6 +303,59 @@ body {
 @keyframes cinematicExit {
     0% { opacity: 1; filter: blur(0); transform: scale(1); }
     100% { opacity: 0; filter: blur(6px); transform: scale(1.02); }
+}
+
+/* Skip link for keyboard users */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: var(--primary-bg);
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-decoration: none;
+    z-index: 10000;
+    transition: top 0.3s ease;
+}
+.skip-link:focus {
+    top: 10px;
+    outline: 2px solid var(--primary-text);
+    outline-offset: 2px;
+}
+
+/* Focus visible styles for keyboard navigation */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    .film-grain {
+        animation: none;
+        display: none;
+    }
+    .loading-bar {
+        transition: none;
+    }
+    .name, .subtitle-line, .role-text, .enter-hint, .landing-footer {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    .corner-mark {
+        opacity: 1 !important;
+    }
 }
 
 /* Mobile */

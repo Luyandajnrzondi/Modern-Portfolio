@@ -2,27 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Luyanda Jnr Zondi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luyanda Jnr Zondi - Developer, Designer & Photographer</title>
+    <meta name="description" content="Portfolio of Luyanda Jnr Zondi - Full-stack web developer, designer, and photographer based in Durban, South Africa. Creating elegant digital experiences with 40+ websites built since 2019.">
+    <meta name="author" content="Luyanda Jnr Zondi">
+    <meta property="og:title" content="Luyanda Jnr Zondi - Portfolio">
+    <meta property="og:description" content="Full-stack web developer, designer, and photographer based in Durban, South Africa.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://luyandajnrzondi.vercel.app/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Luyanda Jnr Zondi - Portfolio">
+    <meta name="twitter:description" content="Full-stack web developer, designer, and photographer based in Durban, South Africa.">
+    <meta name="theme-color" content="#07120e">
+    <link rel="canonical" href="https://luyandajnrzondi.vercel.app/">
     <link rel="stylesheet" href="style.css">
     <link rel="apple-touch-icon" sizes="180x180" href="tapicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="tapicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="tapicon/favicon-16x16.png">
     <link rel="manifest" href="tapicon/site.webmanifest">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Luyanda Jnr Zondi",
+        "url": "https://luyandajnrzondi.vercel.app/",
+        "jobTitle": "Full-Stack Web Developer & Designer",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Durban",
+            "addressCountry": "ZA"
+        },
+        "sameAs": [
+            "https://github.com/Luyandajnrzondi",
+            "https://www.instagram.com/luyanda.io/",
+            "https://www.twitter.com/luyanda_io/"
+        ]
+    }
+    </script>
 </head>
 <body>
+    <!-- Skip to main content link for keyboard/screen reader users -->
+    <a href="main.html" class="skip-link">Skip to portfolio</a>
+
     <!-- Film grain overlay -->
-    <div class="film-grain"></div>
+    <div class="film-grain" aria-hidden="true"></div>
     
     <!-- Cinematic letterbox bars -->
-    <div class="letterbox letterbox-top"></div>
-    <div class="letterbox letterbox-bottom"></div>
+    <div class="letterbox letterbox-top" aria-hidden="true"></div>
+    <div class="letterbox letterbox-bottom" aria-hidden="true"></div>
 
     <!-- Particle canvas -->
-    <canvas id="particle-canvas"></canvas>
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
 
-    <div class="landing-container">
-        <div class="landing-frame">
+    <main class="landing-container" role="main">
+        <div class="landing-frame" aria-hidden="true">
             <div class="corner-mark top-left"></div>
             <div class="corner-mark top-right"></div>
             <div class="corner-mark bottom-left"></div>
@@ -31,32 +66,35 @@
 
         <div class="landing-content">
             <div class="subtitle-line">
-                <span class="line-accent"></span>
+                <span class="line-accent" aria-hidden="true"></span>
                 <span class="subtitle-text">PORTFOLIO</span>
-                <span class="line-accent"></span>
+                <span class="line-accent" aria-hidden="true"></span>
             </div>
-            <div class="name">Luyanda Jnr Zondi</div>
-            <div class="role-text">Developer &middot; Designer &middot; Photographer</div>
-            <div class="loading-bar-container">
+            <h1 class="name">Luyanda Jnr Zondi</h1>
+            <p class="role-text">Developer &middot; Designer &middot; Photographer</p>
+            <div class="loading-bar-container" role="progressbar" aria-label="Loading portfolio" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                 <div class="loading-bar"></div>
             </div>
-            <div class="enter-hint">Click anywhere to enter</div>
+            <a href="main.html" class="enter-hint" role="button">Click anywhere to enter</a>
         </div>
 
         <div class="landing-footer">
             <span class="year-text">&copy; 2026</span>
             <span class="location-text">Durban, South Africa</span>
         </div>
-    </div>
+    </main>
 
     <script>
-        // Particle system
+        // Particle system - reduced count for better performance
         (function() {
             const canvas = document.getElementById('particle-canvas');
             const ctx = canvas.getContext('2d');
             let particles = [];
             let mouse = { x: null, y: null };
-            const particleCount = 120;
+            // Reduce particle count on mobile for performance
+            const isMobile = window.innerWidth <= 768;
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const particleCount = prefersReducedMotion ? 0 : (isMobile ? 50 : 80);
 
             function resize() {
                 canvas.width = window.innerWidth;
@@ -96,27 +134,35 @@
                     ctx.fillStyle = `rgba(233, 214, 179, ${p.opacity})`;
                     ctx.fill();
 
-                    // Connect nearby particles with lines
-                    for (let j = i + 1; j < particles.length; j++) {
+                    // Connect nearby particles with lines (limit checks for performance)
+                    const maxConnections = 5;
+                    let connections = 0;
+                    for (let j = i + 1; j < particles.length && connections < maxConnections; j++) {
                         const dx = p.x - particles[j].x;
                         const dy = p.y - particles[j].y;
-                        const dist = Math.sqrt(dx * dx + dy * dy);
-                        if (dist < 120) {
+                        const distSq = dx * dx + dy * dy;
+                        if (distSq < 14400) { // 120^2, avoid sqrt
+                            const dist = Math.sqrt(distSq);
                             ctx.beginPath();
                             ctx.moveTo(p.x, p.y);
                             ctx.lineTo(particles[j].x, particles[j].y);
                             ctx.strokeStyle = `rgba(233, 214, 179, ${0.06 * (1 - dist / 120)})`;
                             ctx.lineWidth = 0.5;
                             ctx.stroke();
+                            connections++;
                         }
                     }
                 });
+            if (!prefersReducedMotion) {
                 requestAnimationFrame(drawParticles);
             }
+        }
 
             window.addEventListener('resize', resize);
             init();
-            drawParticles();
+            if (!prefersReducedMotion) {
+                drawParticles();
+            }
         })();
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -128,43 +174,50 @@
             const corners = document.querySelectorAll('.corner-mark');
             const hint = document.querySelector('.enter-hint');
             const footer = document.querySelector('.landing-footer');
+            const progressBar = document.querySelector('.loading-bar-container');
 
-            // Staggered cinematic entrance
-            setTimeout(() => {
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            if (prefersReducedMotion) {
+                // Show everything instantly for users who prefer reduced motion
                 corners.forEach(c => c.classList.add('animate-in'));
-            }, 300);
-
-            setTimeout(() => {
                 subtitle.classList.add('animate-in');
-            }, 600);
-
-            setTimeout(() => {
                 name.classList.add('animate-in');
-            }, 900);
-
-            setTimeout(() => {
                 role.classList.add('animate-in');
-            }, 1200);
-
-            setTimeout(() => {
                 loadingBar.style.width = '100%';
-            }, 1500);
-
-            setTimeout(() => {
+                if (progressBar) progressBar.setAttribute('aria-valuenow', '100');
                 hint.classList.add('animate-in');
                 footer.classList.add('animate-in');
-            }, 2500);
+            } else {
+                // Staggered cinematic entrance
+                setTimeout(() => {
+                    corners.forEach(c => c.classList.add('animate-in'));
+                }, 300);
 
-            // Redirect after animations
-            setTimeout(() => {
-                container.classList.add('animate-out');
-            }, 6000);
+                setTimeout(() => {
+                    subtitle.classList.add('animate-in');
+                }, 600);
 
-            setTimeout(() => {
-                window.location.href = "main.html";
-            }, 7500);
+                setTimeout(() => {
+                    name.classList.add('animate-in');
+                }, 900);
 
-            // Skip on click/touch
+                setTimeout(() => {
+                    role.classList.add('animate-in');
+                }, 1200);
+
+                setTimeout(() => {
+                    loadingBar.style.width = '100%';
+                    if (progressBar) progressBar.setAttribute('aria-valuenow', '100');
+                }, 1500);
+
+                setTimeout(() => {
+                    hint.classList.add('animate-in');
+                    footer.classList.add('animate-in');
+                }, 2500);
+            }
+
+            // Navigate on click/touch/keyboard -- no forced auto-redirect
             let navigating = false;
             function navigate() {
                 if (navigating) return;
@@ -172,10 +225,16 @@
                 container.classList.add('animate-out');
                 setTimeout(() => {
                     window.location.href = "main.html";
-                }, 800);
+                }, prefersReducedMotion ? 0 : 800);
             }
             document.addEventListener('click', navigate);
             document.addEventListener('touchend', navigate);
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    navigate();
+                }
+            });
         });
     </script>
 </body>
